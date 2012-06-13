@@ -1,0 +1,24 @@
+{
+    "name": "rakuten-ws/rws-php-sdk",
+    "type": "library",
+    "homepage": "http://webservice.rakuten.co.jp",
+    "description": "The SDK of Rakuten Web Service",
+    "keywords": ["WebAPI", "Client", "SDK"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shogo Kawahara",
+            "email": "shogo.a.kawahara@mail.rakuten.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.3",
+        "ext-openssl": "*"
+    },
+    "suggest": {
+        "pear-pear/HTTP_Client": "*"
+    },
+    "autoload": {
+        "psr-0": {"RakutenRws_": "lib/"}
+    }
+}

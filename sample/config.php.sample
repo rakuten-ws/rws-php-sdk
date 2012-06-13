@@ -1,0 +1,4 @@
+<?php
+
+define('RAKUTEN_APP_ID', '#PLEASE_EDIT#');
+define('RAKUTEN_APP_SECRET', '#PLEASE_EDIT#');
