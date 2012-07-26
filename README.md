@@ -1,6 +1,8 @@
 Rakuten Web Service SDK for PHP
 ===============================
 
+[![Build Status](https://secure.travis-ci.org/rakuten-ws/rws-php-sdk.png?branch=master)](http://travis-ci.org/rakuten-ws/rws-php-sdk)
+
 Rakuten Web Service SDK for PHP は、PHPアプリケーションから
 楽天が提供しているAPIに、簡単にアクセスすることができるSDK
 (Software Development Kit)です。
