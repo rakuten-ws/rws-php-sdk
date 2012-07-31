@@ -27,7 +27,7 @@ class RakutenRws_Client
         $httpClient      = null;
 
     /**
-     * Constructer.
+     * Constructor.
      *
      * @param RakutenRws_HttpClient $httpClient HTTP Client instance
      * @throws RakutenRws_Exception
