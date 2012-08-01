@@ -16,6 +16,7 @@
         "ext-openssl": "*"
     },
     "suggest": {
+        "ext-curl": "*",
         "pear-pear/HTTP_Client": "*"
     },
     "autoload": {
