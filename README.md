@@ -25,7 +25,7 @@ SDK の利用準備が整います。
 
 ユーザ認証の必要のない、APIについては、以下のように情報を取得することができます。
 
-    require_once '/path/to/sdk-dir/autoload.php'
+    require_once '/path/to/sdk-dir/autoload.php';
 
     $client = new RakutenRws_Client();
     // アプリID (デベロッパーID) をセットします
@@ -79,7 +79,7 @@ foreach で 情報(商品情報・施設情報など) を順次取得するこ�
 
 以下が例です。
 
-    require_once '/path/to/sdk-dir/autoload.php'
+    require_once '/path/to/sdk-dir/autoload.php';
 
     $client = new RakutenRws_Client();
     $client->setApplicationId('YOUR_APPLICATION_ID');
@@ -104,7 +104,7 @@ APIを使う場合は、 *access_token* を取得する必要があります。
 まず、ユーザを認証ページに誘導してください。認証ページのURLは、以下のように取得することができます。
 この時、 *RakutenRws_Client::getAuthorizeUrl()* には、API利用スコープを設定することを忘れないください。
 
-    require_once '/path/to/sdk-dir/autoload.php'
+    require_once '/path/to/sdk-dir/autoload.php';
 
     $client = new RakutenRws_Client();
     // アプリID (デベロッパーID) をセットします
@@ -121,7 +121,7 @@ APIを使う場合は、 *access_token* を取得する必要があります。
 認証が成功すると、CALLBACK_URL に code というパラメータ付きで
 戻されます。以下のように、code から access_token を取得することができます。
 
-    require_once '/path/to/sdk-dir/autoload.php'
+    require_once '/path/to/sdk-dir/autoload.php';
 
     $client = new RakutenRws_Client();
     // アプリID (デベロッパーID) をセットします
