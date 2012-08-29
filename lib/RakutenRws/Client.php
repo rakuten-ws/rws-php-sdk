@@ -93,9 +93,9 @@ class RakutenRws_Client
     }
 
     /**
-     * Gets DeveloperID
+     * Gets AffilateID
      *
-     * @return string|null The DeveloperID
+     * @return string|null The AffiliateID
      */
     public function getAffiliateId()
     {
