@@ -24,7 +24,8 @@ class RakutenRws_Client
         $accessToken     = null,
         $accessTokenInfo = null,
         $redirectUrl     = null,
-        $httpClient      = null;
+        $httpClient      = null,
+        $affiliateId     = null;
 
     /**
      * Constructor.
@@ -79,6 +80,26 @@ class RakutenRws_Client
     public function getApplicationId()
     {
         return $this->developerId;
+    }
+    
+     /**
+     * Sets the AffiliateID
+     *
+     * @param string $affiliateId The AffiliateID
+     */
+    public function setAffiliateId($affiliateId)
+    {
+        $this->affiliateId = $affiliateId;
+    }
+
+    /**
+     * Gets DeveloperID
+     *
+     * @return string|null The DeveloperID
+     */
+    public function getAffiliateId()
+    {
+        return $this->affiliateId;
     }
 
     /**
@@ -224,6 +245,10 @@ class RakutenRws_Client
         $api = new $className($this);
         if ($version !== null) {
             $api->setVersion($version);
+        }
+        
+        if (isset($this->affiliateId)) {
+            $parameter['affiliateId'] = $this->affiliateId;
         }
 
         return $api->execute($parameter);
