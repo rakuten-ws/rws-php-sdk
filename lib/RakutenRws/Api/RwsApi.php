@@ -44,6 +44,8 @@ abstract class RakutenRws_Api_RwsApi extends RakutenRws_Api_Base
             $parameter['affiliateId'] = $this->client->getAffiliateId();
         }
 
+        unset($parameter['callBack']);
+
         return $url.'?'.http_build_query($parameter);
     }
 
