@@ -40,6 +40,10 @@ abstract class RakutenRws_Api_RwsApi extends RakutenRws_Api_Base
         $parameter['operation']   = $this->getOperationName();
         $parameter['developerId'] = $this->client->getApplicationId();
 
+        if ($this->client->getApplicationId()) {
+            $parameter['affiliateId'] = $this->client->getAffiliateId();
+        }
+
         return $url.'?'.http_build_query($parameter);
     }
 

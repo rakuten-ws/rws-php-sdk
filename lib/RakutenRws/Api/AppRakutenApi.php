@@ -45,7 +45,11 @@ abstract class RakutenRws_Api_AppRakutenApi extends RakutenRws_Api_Base
         if ($this->isRequiredAccessToken) {
             $parameter['access_token'] = $this->client->getAccessToken();
         } else {
-            $parameter['applicationId']    = $this->client->getApplicationId();
+            $parameter['applicationId'] = $this->client->getApplicationId();
+        }
+
+        if ($this->client->getAffiliateId()) {
+            $parameter['affiliateId'] = $this->client->getAffiliateId();
         }
 
         $client = $this->client->getHttpClient();

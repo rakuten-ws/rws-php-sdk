@@ -81,8 +81,8 @@ class RakutenRws_Client
     {
         return $this->developerId;
     }
-    
-     /**
+
+    /**
      * Sets the AffiliateID
      *
      * @param string $affiliateId The AffiliateID
@@ -176,7 +176,6 @@ class RakutenRws_Client
             'client_secret' => $this->secret,
             'code'          => $code,
             'redirect_uri'  => $this->redirectUrl
-
         );
 
         $response = $this->httpClient->post(
@@ -245,10 +244,6 @@ class RakutenRws_Client
         $api = new $className($this);
         if ($version !== null) {
             $api->setVersion($version);
-        }
-        
-        if (isset($this->affiliateId)) {
-            $parameter['affiliateId'] = $this->affiliateId;
         }
 
         return $api->execute($parameter);
