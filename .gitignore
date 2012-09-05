@@ -1,5 +1,3 @@
 vendor
 composer.lock
-apidoc
-apidoc_cache
 sample/config.php
