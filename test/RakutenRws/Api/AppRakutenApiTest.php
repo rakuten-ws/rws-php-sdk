@@ -67,7 +67,8 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
 
         $url = 'https://app.rakuten.co.jp/services/api/DummyService/DummyOperation2/19890108';
         $param = array(
-            'applicationId' => '123'
+            'applicationId' => '123',
+            'affiliateId'   => '456'
         );
 
         $httpResponse = new RakutenRws_HttpResponse($url, $param, 200, array(), json_encode(array(
@@ -85,6 +86,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
         $rwsClient = $this->getMock('RakutenRws_Client', array(
             'getHttpClient',
             'getApplicationId',
+            'getAffiliateId'
         ), array(), 'rwsClient_for_'.__FUNCTION__);
 
         $rwsClient->expects($this->once())
@@ -94,6 +96,10 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
         $rwsClient->expects($this->once())
             ->method('getApplicationId')
             ->will($this->returnValue('123'));
+
+        $rwsClient->expects($this->any())
+            ->method('getAffiliateId')
+            ->will($this->returnValue('456'));
 
         $api = new RakutenRws_Api_Definition_DummyAppRakutenApi2($rwsClient);
         $response = $api->execute(array());
