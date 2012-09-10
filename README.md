@@ -31,6 +31,9 @@ SDK の利用準備が整います。
     // アプリID (デベロッパーID) をセットします
     $client->setApplicationId('YOUR_APPLICATION_ID');
 
+    // アフィリエイトID をセットします(任意)
+    $client->setAffiliateId('YOUR_AFFILIATE_ID');
+
     // ItemSearch API から、keyword=うどん を検索します
     $response = $client->execute('ItemSearch', array(
       'keyword' => 'うどん'
@@ -83,6 +86,7 @@ foreach で 情報(商品情報・施設情報など) を順次取得するこ�
 
     $client = new RakutenRws_Client();
     $client->setApplicationId('YOUR_APPLICATION_ID');
+    $client->setAffiliateId('YOUR_AFFILIATE_ID');
 
     $response = $client->execute('ItemSearch', array(
       'keyword' => 'うどん'
@@ -128,6 +132,8 @@ APIを使う場合は、 *access_token* を取得する必要があります。
     $client->setApplicationId('YOUR_APPLICATION_ID');
     // Secret をセットします
     $client->setSecret('YOUR_APPLICATION_SECRET');
+    // アフィリエイトID をセットします (任意)
+    $client->setAffiliateId('YOUR_AFFILIATE_ID');
     // リダイレクトURL (ログイン後に戻ってくるURL) をセットします
     $client->setRedirectUrl('CALLBACK_URL');
 
