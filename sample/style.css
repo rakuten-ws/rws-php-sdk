@@ -1,0 +1,96 @@
+body,h1,ul,li {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Meiryo,"メイリオ","ＭＳ Ｐゴシック";
+}
+header {
+    margin: 0;
+    padding: 0;
+    background-color: #BF0000;
+}
+header h1 a {
+    margin: 0;
+    padding: 10px;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: cursive;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 1px #000000;
+    text-decoration: none;
+}
+nav.search-form {
+    margin: 10px 0;
+    text-align: center;
+}
+nav.search-form input.keyword {
+    font-size: 24px;
+    width: 500px;
+}
+nav.search-form input.search-button {
+    font-size: 24px;
+}
+#itemarea {
+    clear: both;
+}
+#itemlist {
+    margin: 0 auto;
+    display: block;
+    width: 840px;
+    padding: 0;
+}
+.item {
+    display: block;
+    width: 250px;
+    float: left;
+    margin: 9px;
+    padding: 5px;
+    background-color: #FFEEFF;
+    height: 300px;
+    overflow: hidden;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    box-shadow: 5px 5px 5px #DDD;
+}
+
+.item ul {
+    padding: 0;
+}
+
+.item ul li {
+    display: block;
+    margin: 3px;
+    padding: 0;
+}
+
+.item ul li.description {
+    overflow: auto;
+    font-size: 10px;
+    max-height: 100px;
+}
+
+.notice {
+    text-align: center;
+    font-weight: bold;
+    background-color: #BF0000;
+    color: #FFFFFF;
+    border-radius: 10px;
+    padding: 5px;
+    width: 300px;
+    margin: 10px auto;
+
+}
+
+.pager {
+    clear: both;
+}
+.pager ul {
+    text-align: center;
+}
+.pager ul li {
+    display: inline-block;
+    padding-right: 1em;
+}
