@@ -71,6 +71,7 @@ foreach で 情報(商品情報・施設情報など) を順次取得するこ�
 * HighCommissionShop
 * HotelDetailSearch
 * HotelRanking
+* IchibaItemRanking
 * IchibaItemSearch
 * ItemCodeSearch
 * ItemRanking
