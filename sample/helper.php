@@ -78,7 +78,7 @@ function pager($currentPage, $lastPage, $urlFormat, $keyword, $size = 4) {
 
     if ($currentPage != $lastPage) {
         $list[] = '<li class="next">'
-            . '<a href="?keyword='.sprintf($urlFormat, urlencode($keyword), $currentPage + 1).'">'
+            . '<a href="'.sprintf($urlFormat, urlencode($keyword), $currentPage + 1).'">'
             . '&gt;'
             . '</a>'
             . '</li>';

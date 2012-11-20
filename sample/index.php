@@ -67,7 +67,7 @@ if (isset($_GET['keyword'])) {
 <div class="pager"><?php echo $pager = pager(
     (int)$page,
     (int)$response['pageCount'],
-    '?keyword=%s&page=%d',
+    '?keyword=%s&amp;page=%d',
     $keyword
 ) ?></div>
 
