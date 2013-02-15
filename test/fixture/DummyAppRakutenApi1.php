@@ -4,9 +4,10 @@ class RakutenRws_Api_Definition_DummyAppRakutenApi1 extends RakutenRws_Api_AppRa
 {
     protected
         $versionMap = array(
-            '19890108' => '19890108',
-            '20120108' => '20120108'
-        );
+            '1989-01-08' => '19890108',
+            '2012-01-08' => '20120108'
+        ),
+        $autoSetIterator = true;
 
     public function getService()
     {

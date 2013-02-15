@@ -4,7 +4,7 @@ class RakutenRws_Api_Definition_DummyAppRakutenApi3 extends RakutenRws_Api_AppRa
 {
     protected
         $versionMap = array(
-            '19890108' => '19890108'
+            '1989-01-08' => '19890108'
         );
 
     public function getService()

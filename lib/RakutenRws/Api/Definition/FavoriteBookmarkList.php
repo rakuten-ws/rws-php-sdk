@@ -19,7 +19,7 @@ class RakutenRws_Api_Definition_FavoriteBookmarkList extends RakutenRws_Api_AppR
 {
     protected
         $versionMap = array(
-            '20120627' => '20120627'
+            '2012-06-27' => '20120627'
         );
 
     public function getService()

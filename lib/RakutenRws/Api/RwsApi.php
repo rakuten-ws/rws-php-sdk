@@ -24,12 +24,6 @@ abstract class RakutenRws_Api_RwsApi extends RakutenRws_Api_Base
         $versionMap = array(),
         $client     = null;
 
-    public function __construct(RakutenRws_Client $client)
-    {
-        $this->client  = $client;
-        $this->version = $this->getLatestVersion();
-    }
-
     protected function genUrl($parameter)
     {
         $url  = self::BASE_URL;
@@ -55,6 +49,12 @@ abstract class RakutenRws_Api_RwsApi extends RakutenRws_Api_Base
      */
     public function execute($parameter)
     {
+        $alias = $this->resolveAlias($parameter);
+        if ($alias !== false) {
+
+            return $alias;
+        }
+
         $client = $this->client->getHttpClient();
         $response = $client->get($this->genUrl($parameter));
 

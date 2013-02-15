@@ -54,6 +54,7 @@ SDK の利用準備が整います。
 以下のAPIはレスポンスが、Iterator に対応しているため
 foreach で 情報(商品情報・施設情報など) を順次取得することが可能です。
 
+* AuctionGenreKeywordSearch
 * AuctionItemCodeSearch
 * AuctionItemSearch
 * BooksBookSearch
@@ -78,6 +79,7 @@ foreach で 情報(商品情報・施設情報など) を順次取得するこ�
 * ItemSearch
 * KeywordHotelSearch
 * ProductSearch
+* RecipeCategoryRanking
 * SimpleHotelSearch
 * VacantHotelSearch
 

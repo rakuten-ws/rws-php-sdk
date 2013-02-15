@@ -20,7 +20,7 @@ class RakutenRws_Api_Definition_IchibaGenreSearch extends RakutenRws_Api_AppRaku
     protected
         $isRequiredAccessToken = false,
         $versionMap = array(
-            '20120723' => '20120723'
+            '2012-07-23' => '20120723'
         );
 
     public function getService()

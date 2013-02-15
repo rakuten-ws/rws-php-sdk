@@ -10,29 +10,26 @@
  */
 
 /**
- * IchibaItemSearch
+ * RecipeCategoryList
  *
  * @package RakutenRws
  * @subpackage Api_Definition
  */
-class RakutenRws_Api_Definition_IchibaItemSearch extends RakutenRws_Api_AppRakutenApi
+class RakutenRws_Api_Definition_RecipeCategoryList extends RakutenRws_Api_AppRakutenApi
 {
     protected
-        $autoSetIterator = true,
         $isRequiredAccessToken = false,
         $versionMap = array(
-            '2013-04-24' => '20130424',
-            '2012-07-23' => '20120723'
+            '2012-11-21' => '20121121'
         );
 
     public function getService()
     {
-        return 'IchibaItem';
+        return 'Recipe';
     }
 
     public function getOperation()
     {
-        return 'Search';
+        return 'CategoryList';
     }
 }
-

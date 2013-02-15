@@ -25,15 +25,19 @@ class RakutenRws_Client
         $accessTokenInfo = null,
         $redirectUrl     = null,
         $httpClient      = null,
-        $affiliateId     = null;
+        $affiliateId     = null,
+        $options         = array();
 
     /**
      * Constructor.
      *
      * @param RakutenRws_HttpClient $httpClient HTTP Client instance
      * @throws RakutenRws_Exception
+     *
+     * option parameter
+     *   - keys 
      */
-    public function __construct(RakutenRws_HttpClient $httpClient = null)
+    public function __construct(RakutenRws_HttpClient $httpClient = null, $options = array())
     {
         if (!extension_loaded('openssl')) {
             // @codeCoverageIgnoreStart
@@ -59,6 +63,7 @@ class RakutenRws_Client
         }
 
         $this->httpClient = $httpClient;
+        $this->options = $options;
     }
 
 
@@ -241,7 +246,7 @@ class RakutenRws_Client
             throw new LogicException('Operation is not definied.');
         }
 
-        $api = new $className($this);
+        $api = new $className($this, $this->options);
         if ($version !== null) {
             $api->setVersion($version);
         }
