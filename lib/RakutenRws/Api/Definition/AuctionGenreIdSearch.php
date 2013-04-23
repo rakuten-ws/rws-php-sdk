@@ -10,24 +10,22 @@
  */
 
 /**
- * IchibaItemSearch
+ * AuctionGenreIdSearch
  *
  * @package RakutenRws
  * @subpackage Api_Definition
  */
-class RakutenRws_Api_Definition_IchibaItemSearch extends RakutenRws_Api_AppRakutenApi
+class RakutenRws_Api_Definition_AuctionGenreIdSearch extends RakutenRws_Api_AppRakutenApi
 {
     protected
-        $autoSetIterator = true,
         $isRequiredAccessToken = false,
         $versionMap = array(
-            '2013-04-24' => '20130424',
-            '2012-07-23' => '20120723'
+            '2012-09-27' => '20120927'
         );
 
     public function getService()
     {
-        return 'IchibaItem';
+        return 'AuctionGenreId';
     }
 
     public function getOperation()
@@ -35,4 +33,3 @@ class RakutenRws_Api_Definition_IchibaItemSearch extends RakutenRws_Api_AppRakut
         return 'Search';
     }
 }
-

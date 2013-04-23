@@ -1,10 +1,10 @@
 <?php
 
-class RakutenRws_Api_Definition_DummyAppRakutenApi2 extends RakutenRws_Api_AppRakutenApi
+class RakutenRws_Api_Definition_DummyAppRakutenApi4 extends RakutenRws_Api_AppRakutenApi
 {
     protected
         $versionMap = array(
-            '1989-01-08' => '19890108'
+            '1989-01-08' => 'RakutenRws_Api_Definition_DummyRwsApi1'
         ),
         $isRequiredAccessToken = false;
 
@@ -15,6 +15,6 @@ class RakutenRws_Api_Definition_DummyAppRakutenApi2 extends RakutenRws_Api_AppRa
 
     public function getOperation()
     {
-        return 'DummyOperation2';
+        return 'DummyOperation4';
     }
 }

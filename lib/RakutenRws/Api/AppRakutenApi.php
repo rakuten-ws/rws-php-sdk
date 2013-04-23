@@ -28,7 +28,9 @@ abstract class RakutenRws_Api_AppRakutenApi extends RakutenRws_Api_Base
     protected function genUrl()
     {
         $url  = self::BASE_URL;
-        $url .= '/'.$this->getService().'/'.$this->getOperation().'/'.$this->getVersion();
+        $url .= '/'.$this->getService();
+        $url .= '/'.$this->getOperation();
+        $url .= '/'.$this->versionMap[$this->version];
 
         return $url;
     }
@@ -40,6 +42,12 @@ abstract class RakutenRws_Api_AppRakutenApi extends RakutenRws_Api_Base
 
     public function execute($parameter)
     {
+        $alias = $this->resolveAlias($parameter);
+        if ($alias !== false) {
+
+            return $alias;
+        }
+
         $url = $this->genUrl();
 
         if ($this->isRequiredAccessToken) {
@@ -63,6 +71,22 @@ abstract class RakutenRws_Api_AppRakutenApi extends RakutenRws_Api_Base
 
         $response = $client->$method($url, $parameter);
 
-        return new RakutenRws_ApiResponse_AppRakutenResponse($this->getOperationName(), $response);
+        $appresponse = new RakutenRws_ApiResponse_AppRakutenResponse($this->getOperationName(), $response);
+
+        if ($this->autoSetIterator && $appresponse->isOk()) {
+            $data = $appresponse->getData();
+            if (!isset($data['Items'])) {
+                throw new RakutenRws_Exception();
+            }
+
+            $items = array();
+            foreach ($data['Items'] as $item) {
+                $items[] = $item['Item'];
+            }
+
+            $appresponse->setIterator($items);
+        }
+
+        return $appresponse;
     }
 }

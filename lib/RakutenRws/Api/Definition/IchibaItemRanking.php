@@ -18,9 +18,10 @@
 class RakutenRws_Api_Definition_IchibaItemRanking extends RakutenRws_Api_AppRakutenApi
 {
     protected
+        $autoSetIterator = true,
         $isRequiredAccessToken = false,
         $versionMap = array(
-            '20120927' => '20120927'
+            '2012-09-27' => '20120927'
         );
 
     public function getService()
@@ -32,26 +33,4 @@ class RakutenRws_Api_Definition_IchibaItemRanking extends RakutenRws_Api_AppRaku
     {
         return 'Ranking';
     }
-
-    public function execute($parameter)
-    {
-        $response = parent::execute($parameter);
-
-        if ($response->isOk()) {
-            $data = $response->getData();
-            if (!isset($data['Items'])) {
-                throw new RakutenRws_Exception();
-            }
-
-            $items = array();
-            foreach ($data['Items'] as $item) {
-                $items[] = $item['Item'];
-            }
-
-            $response->setIterator($items);
-        }
-
-        return $response;
-    }
 }
-

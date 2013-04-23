@@ -19,6 +19,7 @@ class RakutenRws_Api_Definition_BooksCDSearch extends RakutenRws_Api_RwsApi
 {
     protected
         $versionMap = array(
+            '2012-11-28' => 'RakutenRws_Api_Definition_BooksCDSearch2',
             '2011-12-01' => '3.0',
             '2011-07-07' => '3.0',
             '2010-03-18' => '3.0',

@@ -19,6 +19,7 @@ class RakutenRws_Api_Definition_BooksGenreSearch extends RakutenRws_Api_RwsApi
 {
     protected
         $versionMap = array(
+            '2012-11-28' => 'RakutenRws_Api_Definition_BooksGenreSearch2',
             '2009-03-26' => '2.0'
         );
 }

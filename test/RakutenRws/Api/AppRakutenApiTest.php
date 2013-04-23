@@ -19,7 +19,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
         );
 
         $httpResponse = new RakutenRws_HttpResponse($url, $param, 200, array(), json_encode(array(
-            'data' => 'the response'
+            'Items' => array(array('Item' => 'data'))
         )));
 
         $httpClient->expects($this->once())
@@ -49,9 +49,9 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('DummyService', $api->getService());
         $this->assertEquals('DummyOperation1', $api->getOperation());
         $this->assertEquals('DummyAppRakutenApi1', $api->getOperationName());
-        $this->assertEquals('19890108', $api->getVersion());
+        $this->assertEquals('1989-01-08', $api->getVersion());
         $this->assertEquals(200, $response->getCode());
-        $this->assertEquals('the response', $response['data']);
+        $this->assertEquals(array(array('Item' => 'data')), $response['Items']);
     }
 
     /**
@@ -107,7 +107,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('DummyService', $api->getService());
         $this->assertEquals('DummyOperation2', $api->getOperation());
         $this->assertEquals('DummyAppRakutenApi2', $api->getOperationName());
-        $this->assertEquals('19890108', $api->getVersion());
+        $this->assertEquals('1989-01-08', $api->getVersion());
         $this->assertEquals(200, $response->getCode());
         $this->assertEquals('the response', $response['data']);
     }
@@ -159,7 +159,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('DummyService', $api->getService());
         $this->assertEquals('DummyOperation3', $api->getOperation());
         $this->assertEquals('DummyAppRakutenApi3', $api->getOperationName());
-        $this->assertEquals('19890108', $api->getVersion());
+        $this->assertEquals('1989-01-08', $api->getVersion());
         $this->assertEquals(200, $response->getCode());
         $this->assertEquals('the response', $response['data']);
     }
@@ -172,8 +172,8 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
     {
         $clinet = new RakutenRws_Client();
         $api = new RakutenRws_Api_Definition_DummyAppRakutenApi1($clinet);
-        $api->setVersion('20120108');
-        $this->assertEquals('20120108', $api->getVersion());
+        $api->setVersion('2012-01-08');
+        $this->assertEquals('2012-01-08', $api->getVersion());
     }
 
     /**
@@ -185,7 +185,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
     {
         $clinet = new RakutenRws_Client();
         $api = new RakutenRws_Api_Definition_DummyAppRakutenApi1($clinet);
-        $api->setVersion('20200108');
+        $api->setVersion('2020-01-08');
     }
 
     /**
@@ -241,7 +241,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('DummyService', $api->getService());
         $this->assertEquals('DummyOperation2', $api->getOperation());
         $this->assertEquals('DummyAppRakutenApi2', $api->getOperationName());
-        $this->assertEquals('19890108', $api->getVersion());
+        $this->assertEquals('1989-01-08', $api->getVersion());
         $this->assertEquals(200, $response->getCode());
         $this->assertEquals('the response', $response['data']);
     }
@@ -299,8 +299,118 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('DummyService', $api->getService());
         $this->assertEquals('DummyOperation2', $api->getOperation());
         $this->assertEquals('DummyAppRakutenApi2', $api->getOperationName());
-        $this->assertEquals('19890108', $api->getVersion());
+        $this->assertEquals('1989-01-08', $api->getVersion());
         $this->assertEquals(200, $response->getCode());
         $this->assertEquals('the response', $response['data']);
+    }
+
+    /**
+     *
+     * @test
+     * @expectedException RakutenRws_Exception
+     */
+    public function testExecuteAppRakutenApi_with_BrokenData()
+    {
+        $httpClient = $this->getMock('RakutenRws_HttpClient', array(
+            'post',
+            'get'
+        ), array(), 'httpClient_for_'.__FUNCTION__);
+
+        $url = 'https://app.rakuten.co.jp/services/api/DummyService/DummyOperation1/19890108';
+        $param = array(
+            'access_token' => 'abc'
+        );
+
+        $httpResponse = new RakutenRws_HttpResponse($url, $param, 200, array(), json_encode(array(
+            'Ooooooohhhhhhhh!!!!'
+        )));
+
+        $httpClient->expects($this->once())
+            ->method('get')
+            ->with(
+                $this->equalTo($url),
+                $this->equalTo($param)
+            )
+            ->will($this->returnValue($httpResponse));
+
+        $rwsClient = $this->getMock('RakutenRws_Client', array(
+            'getHttpClient',
+            'getAccessToken',
+        ), array(), 'rwsClient_for_'.__FUNCTION__);
+
+        $rwsClient->expects($this->once())
+            ->method('getHttpClient')
+            ->will($this->returnValue($httpClient));
+
+        $rwsClient->expects($this->once())
+            ->method('getAccessToken')
+            ->will($this->returnValue('abc'));
+
+        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi1($rwsClient);
+        $response = $api->execute(array());
+    }
+
+    /**
+     *
+     * @test
+     */
+    public function testExecuteAppRakutenApi_with_Alias()
+    {
+        $httpClient = $this->getMock('RakutenRws_HttpClient', array(
+            'post',
+            'get'
+        ), array(), 'httpClient_for_'.__FUNCTION__);
+
+        $url = 'http://api.rakuten.co.jp/rws/3.0/json?version=1989-01-08&operation=DummyRwsApi1&developerId=123&affiliateId=456';
+
+        $httpResponse = new RakutenRws_HttpResponse($url, array(), 200, array(), json_encode(array(
+            'Header' => array(
+                'Status' => 'Success',
+                'StatusMsg' => 'The msg'
+             ),
+             'Body' => array(
+                 'data' => ':)'
+             )
+        )));
+
+        $httpClient->expects($this->once())
+            ->method('get')
+            ->with(
+                $this->equalTo($url),
+                $this->equalTo(array())
+            )
+            ->will($this->returnValue($httpResponse));
+
+        $clinet = new RakutenRws_Client($httpClient);
+        $clinet->setApplicationId('123');
+        $clinet->setAffiliateId('456');
+
+        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi4($clinet);
+        $response = $api->execute(array());
+
+        $this->assertEquals('1989-01-08', $api->getVersion());
+        $this->assertEquals('DummyAppRakutenApi4', $api->getOperationName());
+        $this->assertTrue($response->isOk());
+        $this->assertEquals(200, $response->getCode());
+        $this->assertEquals('The msg', $response->getMessage());
+        $this->assertEquals(':)', $response['Body']['data']);
+    }
+
+    /**
+     *
+     * @test
+     * @expectedException LogicException
+     */
+    public function testExecuteAppRakutenApi_with_Alias_Error()
+    {
+        $httpClient = $this->getMock('RakutenRws_HttpClient', array(
+        ), array(), 'httpClient_for_'.__FUNCTION__);
+
+        $clinet = new RakutenRws_Client($httpClient);
+        $clinet->setApplicationId('123');
+        $clinet->setAffiliateId('456');
+
+        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi4($clinet, array('is_use_alias' => false));
+        $response = $api->execute(array());
     }
 }
