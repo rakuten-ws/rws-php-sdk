@@ -21,6 +21,7 @@ class RakutenRws_Api_Definition_BooksTotalSearch2 extends RakutenRws_Api_AppRaku
         $autoSetIterator = true,
         $isRequiredAccessToken = false,
         $versionMap = array(
+            '2013-05-22' => '20130522',
             '2012-11-28' => '20121128'
         );
 
