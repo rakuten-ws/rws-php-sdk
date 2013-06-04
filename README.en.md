@@ -9,7 +9,7 @@ Requirement
 -----------
 
 - PHP5.2.3+ (Recommended: PHP5.2.10+ with [curl extension](http://php.net/manual/en/book.curl.php))
-- If you want to use this library on PHP5.2.10-, please install [HTTP_Client] on PEAR
+- If you want to use this library on PHP5.2.10-, please install [HTTP_Client](http://pear.php.net/manual/en/package.http.http-client.php) on PEAR
   or curl extension.
 
 Basic Usage
