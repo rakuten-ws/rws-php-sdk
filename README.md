@@ -1,7 +1,7 @@
 Rakuten Web Service SDK for PHP
 ===============================
 
-There is English version in [here](https://github.com/rakuten-ws/rws-php-sdk/blob/master/README.en.md).
+There is an English version in [here](https://github.com/rakuten-ws/rws-php-sdk/blob/master/README.en.md).
 
 [![Build Status](https://secure.travis-ci.org/rakuten-ws/rws-php-sdk.png?branch=master)](http://travis-ci.org/rakuten-ws/rws-php-sdk)
 
