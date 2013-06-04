@@ -198,11 +198,12 @@ Install with Composer
 RWS PHP SDK is registered at [Packagist](http://packagist.org/).
 Therefore, you can get and manage the library with [Composer](http://getcomposer.org).
 
-- Get composer
+Get composer
 
-  curl -s http://getcomposer.org/installer | php
+    curl -s http://getcomposer.org/installer | php
 
-- Create *composer.json* file in the project root:
+Create *composer.json* file in the project root:
+
 
     {
         "require": {
@@ -210,9 +211,9 @@ Therefore, you can get and manage the library with [Composer](http://getcomposer
         }
     }
 
-- Install
+Install
 
-  php composer.phar install
+    php composer.phar install
 
 SDK API Document
 ----------------

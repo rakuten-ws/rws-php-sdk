@@ -198,11 +198,11 @@ Composer での入手
 RWS PHP SDK は、[Packagist](http://packagist.org/) にパッケージ登録を行っています。
 そのため、 [Composer](http://getcomposer.org/) を通してパッケージを入手することができます。
 
-- composer を入手します
+composer を入手します
 
-  curl -s http://getcomposer.org/installer | php
+    curl -s http://getcomposer.org/installer | php
 
-- あなたの開発プロジェクトのルートに composer.json を作成します。
+あなたの開発プロジェクトのルートに composer.json を作成します。
 
     {
         "require": {
@@ -210,9 +210,9 @@ RWS PHP SDK は、[Packagist](http://packagist.org/) にパッケージ登録を
         }
     }
 
-- composer を通してパッケージを入手します
+composer を通してパッケージを入手します
 
-  php composer.phar install
+    php composer.phar install
 
 SDK API Document
 ----------------
