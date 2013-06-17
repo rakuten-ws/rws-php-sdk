@@ -16,7 +16,7 @@
  */
 class RakutenRws_Client
 {
-    const VERSION = '1.0.4';
+    const VERSION = '1.0.5-dev';
 
     protected
         $developerId     = null,
