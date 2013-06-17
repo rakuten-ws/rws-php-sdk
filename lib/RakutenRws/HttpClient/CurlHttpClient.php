@@ -17,19 +17,29 @@
  */
 class RakutenRws_HttpClient_CurlHttpClient extends RakutenRws_HttpClient
 {
+    protected
+        $curlOptions = array();
+
+    public function __construct($options = array())
+    {
+        $this->curlOptions = $options;
+    }
+
     protected function getHandler()
     {
         $ch = curl_init();
 
+        curl_setopt_array($ch, $this->curlOptions);
         if ($this->proxy !== null) {
             curl_setopt($ch, CURLOPT_PROXY, $this->proxy);
         }
 
         curl_setopt($ch, CURLOPT_USERAGENT, 'RakutenWebService SDK for PHP-'.RakutenRws_Client::VERSION);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true );
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
+
 
         return $ch;
     }
@@ -76,6 +86,16 @@ class RakutenRws_HttpClient_CurlHttpClient extends RakutenRws_HttpClient
             $headers,
             $contents
         );
+    }
+
+    public function getCurlOptions($options)
+    {
+        return $this->curlOptions;
+    }
+
+    public function setCurlOptions($options)
+    {
+        $this->curlOptions = $options;
     }
 
     public function get($url, $params = array())
