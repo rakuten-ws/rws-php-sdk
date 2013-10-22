@@ -255,9 +255,9 @@ SDK API Document
 
 この SDK は、オープンソースです。 MIT License の下で利用することができます。
 
-もし、あなたがSDK中に間違えを見つけた場合は、[こちら] (https://github.com/rakuten-ws/rws-php-sdk/issues)から
+もし、あなたがSDK中に間違えを見つけた場合は、[こちら](https://github.com/rakuten-ws/rws-php-sdk/issues)から
 バグ報告を行ってください。
 
 また、Pull Request を歓迎しております。
-Pull Request を行う場合は、[こちらのレポジトリ] (https://github.com/rakuten-ws/rws-php-sdk) に対して、
+Pull Request を行う場合は、[こちらのレポジトリ](https://github.com/rakuten-ws/rws-php-sdk) に対して、
 送信してください。
