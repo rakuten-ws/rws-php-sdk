@@ -13,7 +13,7 @@ Rakuten Web Service SDK for PHP は、PHPアプリケーションから
 --------
 
 - PHP5.2.3以上 (PHP5.2.10以上, [curl拡張](http://php.net/manual/ja/book.curl.php) 導入を推奨)
-- PHP5.2.10未満を利用する場合、PEAR の [HTTP_Client] (http://pear.php.net/manual/ja/package.http.http-client.php)
+- PHP5.2.10未満を利用する場合、PEAR の [HTTP_Client](http://pear.php.net/manual/ja/package.http.http-client.php)
   か curl拡張の導入が必要です。
 
 ダウンロード
@@ -21,8 +21,8 @@ Rakuten Web Service SDK for PHP は、PHPアプリケーションから
 
 以下からSDKをダウンロードすることができます。
 
-- [最新版 1.0.4 - zipアーカイブ] (https://github.com/rakuten-ws/rws-php-sdk/archive/1.0.4.zip)
-- [ソースコード (Github)] (https://github.com/rakuten-ws/rws-php-sdk)
+- [最新版 1.0.4 - zipアーカイブ](https://github.com/rakuten-ws/rws-php-sdk/archive/1.0.4.zip)
+- [ソースコード (Github)](https://github.com/rakuten-ws/rws-php-sdk)
 
 また、RWS PHP SDK は、[Packagist](http://packagist.org/) にパッケージ登録を行っています。
 そのため、 [Composer](http://getcomposer.org/) を通してパッケージを入手することができます。

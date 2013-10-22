@@ -17,8 +17,8 @@ Download
 
 You can download SDK from following links.
 
-- [Stable 1.0.4 - zip] (https://github.com/rakuten-ws/rws-php-sdk/archive/1.0.4.zip)
-- [Source Code (Github)] (https://github.com/rakuten-ws/rws-php-sdk)
+- [Stable 1.0.4 - zip](https://github.com/rakuten-ws/rws-php-sdk/archive/1.0.4.zip)
+- [Source Code (Github)](https://github.com/rakuten-ws/rws-php-sdk)
 
 RWS PHP SDK is registered at [Packagist](http://packagist.org/).
 Therefore, you can get and manage the library with [Composer](http://getcomposer.org).
