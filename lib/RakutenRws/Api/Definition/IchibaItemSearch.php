@@ -21,6 +21,7 @@ class RakutenRws_Api_Definition_IchibaItemSearch extends RakutenRws_Api_AppRakut
         $autoSetIterator = true,
         $isRequiredAccessToken = false,
         $versionMap = array(
+            '2013-08-05' => '20130805',
             '2013-04-24' => '20130424',
             '2012-07-23' => '20120723'
         );
