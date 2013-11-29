@@ -1,6 +1,21 @@
 CHANGELOG
 =========
 
+* 1.0.5 (2013-11-29)
+
+  * 9d57904: 楽天KoboAPIの定義追加
+  * 16fe639: Travel APIのバージョン更新
+  * 4065571: GORA APIのバージョン更新
+  * dc9fc9b: IchibaItem/Search のバージョン更新
+  * ebc823c: AuctionItem/Search のバージョン更新
+  * b092f3e: Travis CI 上での PHP5.5 対応 (Thanks to sasezaki!)
+  * 5cbf725: CurlHttpClient においてオプションを受け入れるように変更
+  * ドキュメントの修正
+
+* 1.0.4 (2013-05-30)
+
+  * 03f116d: Books新APIの登録
+
 * 1.0.3 (2013-04-25)
 
   * 8ceb433: 現時点でのAPI情報の更新
