@@ -10,7 +10,7 @@
  */
 
 /**
- * GoraGoldCourseDetail
+ * GoraGolfCourseDetail
  *
  * @package RakutenRws
  * @subpackage Api_Definition
@@ -19,6 +19,7 @@ class RakutenRws_Api_Definition_GoraGolfCourseDetail extends RakutenRws_Api_RwsA
 {
     protected
         $versionMap = array(
+            '2013-11-13' => 'RakutenRws_Api_Definition_GoraGoraGolfCourseDetail',
             '2010-06-30' => '3.0'
         );
 

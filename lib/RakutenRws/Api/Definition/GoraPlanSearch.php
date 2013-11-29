@@ -19,6 +19,7 @@ class RakutenRws_Api_Definition_GoraPlanSearch extends RakutenRws_Api_RwsApi
 {
     protected
         $versionMap = array(
+            '2013-11-13' => 'RakutenRws_Api_Definition_GoraGoraPlanSearch',
             '2011-05-12' => '3.0'
         ),
         $autoSetIterator = true;

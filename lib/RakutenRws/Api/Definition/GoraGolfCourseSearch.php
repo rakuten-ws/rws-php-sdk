@@ -19,6 +19,7 @@ class RakutenRws_Api_Definition_GoraGolfCourseSearch extends RakutenRws_Api_RwsA
 {
     protected
         $versionMap = array(
+            '2013-11-13' => 'RakutenRws_Api_Definition_GoraGoraGolfCourseSearch',
             '2010-06-30' => '3.0'
         ),
         $autoSetIterator = true;
