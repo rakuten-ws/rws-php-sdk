@@ -20,7 +20,10 @@ abstract class RakutenRws_Api_AppRakutenApi extends RakutenRws_Api_Base
     const BASE_URL = 'https://app.rakuten.co.jp/services/api';
 
     protected
-        $isRequiredAccessToken = true;
+        $isRequiredAccessToken = true,
+        $arrayName = "Items",
+        $entityName = "Item";
+
 
     abstract public function getService();
     abstract public function getOperation();
@@ -75,13 +78,13 @@ abstract class RakutenRws_Api_AppRakutenApi extends RakutenRws_Api_Base
 
         if ($this->autoSetIterator && $appresponse->isOk()) {
             $data = $appresponse->getData();
-            if (!isset($data['Items'])) {
+            if (!isset($data[$this->arrayName])) {
                 throw new RakutenRws_Exception();
             }
 
             $items = array();
-            foreach ($data['Items'] as $item) {
-                $items[] = $item['Item'];
+            foreach ($data[$this->arrayName] as $item) {
+                $items[] = $item[$this->entityName];
             }
 
             $appresponse->setIterator($items);
