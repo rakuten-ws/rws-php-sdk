@@ -67,15 +67,15 @@ $client->setApplicationId('YOUR_APPLICATION_ID');
 // アフィリエイトID をセットします(任意)
 $client->setAffiliateId('YOUR_AFFILIATE_ID');
 
-// ItemSearch API から、keyword=うどん を検索します
-$response = $client->execute('ItemSearch', array(
+// IchibaItem/Search API から、keyword=うどん を検索します
+$response = $client->execute('IchibaItemSearch', array(
   'keyword' => 'うどん'
 ));
 
 // レスポンスが正しいかを isOk() で確認することができます
 if ($response->isOk()) {
     // 配列アクセスによりレスポンスにアクセスすることができます。
-    var_dump($response['Body']);
+    var_dump($response['hits']);
 } else {
     echo 'Error:'.$response->getMessage();
 }
@@ -104,18 +104,16 @@ foreach で 情報(商品情報・施設情報など) を順次取得するこ�
 * GoraGolfCourseSearch
 * GoraPlanSearch
 * HighCommissionShop
-* HotelDetailSearch
-* HotelRanking
 * IchibaItemRanking
 * IchibaItemSearch
-* ItemCodeSearch
 * ItemRanking
-* ItemSearch
-* KeywordHotelSearch
+* KoboEbookSearch
+* TravelHotelDetailSearch
+* TravelKeywordHotelSearch
+* TravelSimpleHotelSearch
+* TravelVacantHotelSearch
 * ProductSearch
 * RecipeCategoryRanking
-* SimpleHotelSearch
-* VacantHotelSearch
 
 以下が例です。
 
@@ -128,7 +126,7 @@ $client = new RakutenRws_Client();
 $client->setApplicationId('YOUR_APPLICATION_ID');
 $client->setAffiliateId('YOUR_AFFILIATE_ID');
 
-$response = $client->execute('ItemSearch', array(
+$response = $client->execute('IchibaItemSearch', array(
   'keyword' => 'うどん'
 ));
 
@@ -224,7 +222,7 @@ $client->setApplicationId('YOUR_APPLICATION_ID');
 $client->setAffiliateId('YOUR_AFFILIATE_ID');
 
 // このリクエストは、プロキシを通して行われます。
-$response = $client->execute('ItemSearch', array(
+$response = $client->execute('IchibaItemSearch', array(
   'keyword' => 'うどん'
 ));
 ```
