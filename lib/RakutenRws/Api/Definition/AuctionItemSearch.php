@@ -19,6 +19,7 @@ class RakutenRws_Api_Definition_AuctionItemSearch extends RakutenRws_Api_RwsApi
 {
     protected
         $versionMap = array(
+            '2013-09-05' => 'RakutenRws_Api_Definition_AuctionItemSearch2',
             '2013-01-10' => 'RakutenRws_Api_Definition_AuctionItemSearch2',
             '2012-10-10' => 'RakutenRws_Api_Definition_AuctionItemSearch2',
             '2012-02-02' => '3.0',

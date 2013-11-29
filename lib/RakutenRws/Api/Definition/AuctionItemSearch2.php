@@ -21,6 +21,7 @@ class RakutenRws_Api_Definition_AuctionItemSearch2 extends RakutenRws_Api_AppRak
         $autoSetIterator = true,
         $isRequiredAccessToken = false,
         $versionMap = array(
+            '2013-09-05' => '20130905',
             '2013-01-10' => '20130110',
             '2013-10-10' => '20131010'
         );
