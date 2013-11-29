@@ -21,7 +21,7 @@ Rakuten Web Service SDK for PHP は、PHPアプリケーションから
 
 以下からSDKをダウンロードすることができます。
 
-- [最新版 1.0.4 - zipアーカイブ](https://github.com/rakuten-ws/rws-php-sdk/archive/1.0.4.zip)
+- [最新版 1.0.5 - zipアーカイブ](https://github.com/rakuten-ws/rws-php-sdk/archive/1.0.5.zip)
 - [ソースコード (Github)](https://github.com/rakuten-ws/rws-php-sdk)
 
 また、RWS PHP SDK は、[Packagist](http://packagist.org/) にパッケージ登録を行っています。
