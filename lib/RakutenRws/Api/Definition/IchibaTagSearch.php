@@ -10,26 +10,22 @@
  */
 
 /**
- * IchibaItemSearch
+ * IchibaTagSearch
  *
  * @package RakutenRws
  * @subpackage Api_Definition
  */
-class RakutenRws_Api_Definition_IchibaItemSearch extends RakutenRws_Api_AppRakutenApi
+class RakutenRws_Api_Definition_IchibaTagSearch extends RakutenRws_Api_AppRakutenApi
 {
     protected
-        $autoSetIterator = true,
         $isRequiredAccessToken = false,
         $versionMap = array(
-            '2014-02-22' => '20140222',
-            '2013-08-05' => '20130805',
-            '2013-04-24' => '20130424',
-            '2012-07-23' => '20120723'
+            '2014-02-22' => '20140222'
         );
 
     public function getService()
     {
-        return 'IchibaItem';
+        return 'IchibaTag';
     }
 
     public function getOperation()
@@ -37,4 +33,3 @@ class RakutenRws_Api_Definition_IchibaItemSearch extends RakutenRws_Api_AppRakut
         return 'Search';
     }
 }
-
