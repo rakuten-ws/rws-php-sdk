@@ -101,19 +101,16 @@ so you can access each item's data with a foreach statement.
 * GoraGolfCourseDetail
 * GoraGolfCourseSearch
 * GoraPlanSearch
-* HighCommissionShop
-* HotelDetailSearch
-* HotelRanking
+* HighCommissionShopList
 * IchibaItemRanking
 * IchibaItemSearch
-* ItemCodeSearch
-* ItemRanking
-* ItemSearch
-* KeywordHotelSearch
+* KoboEbookSearch
 * ProductSearch
 * RecipeCategoryRanking
-* SimpleHotelSearch
-* VacantHotelSearch
+* TravelHotelDetailSearch
+* TravelKeywordHotelSearch
+* TravelSimpleHotelSearch
+* TravelVacantHotelSearch
 
 Example:
 

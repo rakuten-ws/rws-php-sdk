@@ -15,11 +15,24 @@
  * @package RakutenRws
  * @subpackage Api_Definition
  */
-class RakutenRws_Api_Definition_ProductSearch extends RakutenRws_Api_RwsApi
+class RakutenRws_Api_Definition_ProductSearch extends RakutenRws_Api_AppRakutenApi
 {
     protected
+        $autoSetIterator = true,
+        $arrayName = 'Products',
+        $entityName = 'Product',
+        $isRequiredAccessToken = false,
         $versionMap = array(
-            '2010-11-18' => '3.0'
-        ),
-        $autoSetIterator = true;
+            '2014-03-05' => '20140305',
+        );
+
+    public function getService()
+    {
+        return 'Product';
+    }
+
+    public function getOperation()
+    {
+        return 'Search';
+    }
 }

@@ -21,7 +21,8 @@ class RakutenRws_Api_Definition_KoboEbookSearch extends RakutenRws_Api_AppRakute
         $autoSetIterator = true,
         $isRequiredAccessToken = false,
         $versionMap = array(
-            '2013-10-10' => '20131010',
+            '2014-08-11' => '20140811',
+            '2013-10-10' => '20131010'
         );
 
     public function getService()

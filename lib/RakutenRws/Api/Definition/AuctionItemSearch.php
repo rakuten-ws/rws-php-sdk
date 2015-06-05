@@ -10,21 +10,29 @@
  */
 
 /**
- * AuctionItemSearch
+ * AuctionItemSearch2
  *
  * @package RakutenRws
  * @subpackage Api_Definition
  */
-class RakutenRws_Api_Definition_AuctionItemSearch extends RakutenRws_Api_RwsApi
+class RakutenRws_Api_Definition_AuctionItemSearch extends RakutenRws_Api_AppRakutenApi
 {
     protected
+        $autoSetIterator = true,
+        $isRequiredAccessToken = false,
         $versionMap = array(
-            '2013-09-05' => 'RakutenRws_Api_Definition_AuctionItemSearch2',
-            '2013-01-10' => 'RakutenRws_Api_Definition_AuctionItemSearch2',
-            '2012-10-10' => 'RakutenRws_Api_Definition_AuctionItemSearch2',
-            '2012-02-02' => '3.0',
-            '2011-04-20' => '3.0',
-            '2010-09-15' => '3.0',
-        ),
-        $autoSetIterator = true;
+            '2013-09-05' => '20130905',
+            '2013-01-10' => '20130110',
+            '2013-10-10' => '20131010'
+        );
+
+    public function getService()
+    {
+        return 'AuctionItem';
+    }
+
+    public function getOperation()
+    {
+        return 'Search';
+    }
 }

@@ -15,14 +15,21 @@
  * @package RakutenRws
  * @subpackage Api_Definition
  */
-class RakutenRws_Api_Definition_AuctionItemCodeSearch extends RakutenRws_Api_RwsApi
+class RakutenRws_Api_Definition_AuctionItemCodeSearch extends RakutenRws_Api_AppRakutenApi
 {
     protected
+        $isRequiredAccessToken = false,
         $versionMap = array(
-            '2012-10-10' => 'RakutenRws_Api_Definition_AuctionItemCodeSearch2',
-            '2012-02-02' => '3.0',
-            '2011-04-20' => '3.0',
-            '2010-09-15' => '3.0'
-        ),
-        $autoSetIterator = true;
+            '2012-10-10' => '20121010'
+        );
+
+    public function getService()
+    {
+        return 'AuctionItemCode';
+    }
+
+    public function getOperation()
+    {
+        return 'Search';
+    }
 }

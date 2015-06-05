@@ -26,26 +26,9 @@ abstract class RakutenRws_Api_Base implements RakutenRws_Api_ApiInterface
 
     public function __construct(RakutenRws_Client $client, $options = array())
     {
-        $defaultOptions = array(
-            'is_use_alias' => true
-        );
-        $this->options = array_merge($defaultOptions, $options);
-
-
+        $this->options = $options;
         $this->client  = $client;
         $this->version = $this->getLatestVersion();
-    }
-
-    protected function resolveAlias($parameter)
-    {
-        if (strpos($this->versionMap[$this->version], 'RakutenRws_') === 0) {
-            $api = new $this->versionMap[$this->version]($this->client);
-            $api->setVersion($this->version);
-
-            return $api->execute($parameter);
-        }
-
-        return false;
     }
 
     public function getAvailableVersions()
@@ -67,12 +50,6 @@ abstract class RakutenRws_Api_Base implements RakutenRws_Api_ApiInterface
     public function getLatestVersion()
     {
         foreach ($this->versionMap as $version => $versionValue) {
-            if (!$this->options['is_use_alias']) {
-                if (strpos($versionValue, 'RakutenRws_') === 0) {
-                    continue;
-                }
-            }
-
             return $version;
         }
 

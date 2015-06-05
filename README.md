@@ -103,17 +103,16 @@ foreach で 情報(商品情報・施設情報など) を順次取得するこ�
 * GoraGolfCourseDetail
 * GoraGolfCourseSearch
 * GoraPlanSearch
-* HighCommissionShop
+* HighCommissionShopList
 * IchibaItemRanking
 * IchibaItemSearch
-* ItemRanking
 * KoboEbookSearch
+* ProductSearch
+* RecipeCategoryRanking
 * TravelHotelDetailSearch
 * TravelKeywordHotelSearch
 * TravelSimpleHotelSearch
 * TravelVacantHotelSearch
-* ProductSearch
-* RecipeCategoryRanking
 
 以下が例です。
 

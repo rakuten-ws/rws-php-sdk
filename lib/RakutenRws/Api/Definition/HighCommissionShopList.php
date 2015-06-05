@@ -10,28 +10,29 @@
  */
 
 /**
- * BooksGameSearch2
+ * HighCommissionShopList
  *
  * @package RakutenRws
  * @subpackage Api_Definition
  */
-class RakutenRws_Api_Definition_BooksGameSearch2 extends RakutenRws_Api_AppRakutenApi
+class RakutenRws_Api_Definition_HighCommissionShopList extends RakutenRws_Api_AppRakutenApi
 {
     protected
         $autoSetIterator = true,
+        $arrayName = 'Shops',
+        $entityName = 'Shop',
         $isRequiredAccessToken = false,
         $versionMap = array(
-            '2013-05-22' => '20130522',
-            '2012-11-28' => '20121128'
+            '2013-12-05' => '20131205',
         );
 
     public function getService()
     {
-        return 'BooksGame';
+        return 'HighCommissionShop';
     }
 
     public function getOperation()
     {
-        return 'Search';
+        return 'List';
     }
 }
