@@ -15,11 +15,21 @@
  * @package RakutenRws
  * @subpackage Api_Definition
  */
-class RakutenRws_Api_Definition_BooksGenreSearch extends RakutenRws_Api_RwsApi
+class RakutenRws_Api_Definition_BooksGenreSearch extends RakutenRws_Api_AppRakutenApi
 {
     protected
+        $isRequiredAccessToken = false,
         $versionMap = array(
-            '2012-11-28' => 'RakutenRws_Api_Definition_BooksGenreSearch2',
-            '2009-03-26' => '2.0'
+            '2012-11-28' => '20121128'
         );
+
+    public function getService()
+    {
+        return 'BooksGenre';
+    }
+
+    public function getOperation()
+    {
+        return 'Search';
+    }
 }
