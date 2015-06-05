@@ -221,32 +221,6 @@ class RakutenRws_ClientTest extends PHPUnit_Framework_TestCase
     /**
      *
      * @test
-     */
-    public function testExecute()
-    {
-        $clinet = new RakutenRws_Client();
-
-        $this->assertInstanceOf('RakutenRws_ApiResponse_RwsResponse', $clinet->execute('MockRwsApi'));
-    }
-
-    /**
-     *
-     * @test
-     */
-    public function testExecute_with_version()
-    {
-        $clinet = new RakutenRws_Client();
-
-        $this->assertInstanceOf('RakutenRws_ApiResponse_RwsResponse', $clinet->execute(
-            'MockRwsApi',
-            array(),
-            '1989-01-08'
-        ));
-    }
-
-    /**
-     *
-     * @test
      * @expectedException LogicException
      */
     public function testExecute_with_WrongOperation()
@@ -257,6 +231,4 @@ class RakutenRws_ClientTest extends PHPUnit_Framework_TestCase
             'WrongOperation'
         ));
     }
-
-
 }

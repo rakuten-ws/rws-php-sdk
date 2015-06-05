@@ -60,6 +60,6 @@ class RakutenRws_ApiResponse_AppRakutenResponseTest extends PHPUnit_Framework_Te
             array(),
             ''
         );
-        $response = new RakutenRws_ApiResponse_AppRakutenResponse('operation', $httpResponse);
+        new RakutenRws_ApiResponse_AppRakutenResponse('operation', $httpResponse);
     }
 }

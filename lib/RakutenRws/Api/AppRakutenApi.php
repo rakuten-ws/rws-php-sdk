@@ -45,12 +45,6 @@ abstract class RakutenRws_Api_AppRakutenApi extends RakutenRws_Api_Base
 
     public function execute($parameter)
     {
-        $alias = $this->resolveAlias($parameter);
-        if ($alias !== false) {
-
-            return $alias;
-        }
-
         $url = $this->genUrl();
 
         if ($this->isRequiredAccessToken) {
