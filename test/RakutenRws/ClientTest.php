@@ -219,6 +219,80 @@ class RakutenRws_ClientTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * testExecute
+     *
+     * @test
+     */
+    public function testExecute()
+    {
+        $httpClient = $this->getMock('RakutenRws_HttpClient', array(
+            'post',
+            'get'
+        ), array(), 'httpClient_for_'.__FUNCTION__);
+
+        $url = 'https://app.rakuten.co.jp/services/api/DummyService/DummyOperation2/19890108';
+        $param = array(
+            'applicationId' => '123',
+            'affiliateId'   => '456'
+        );
+
+        $httpResponse = new RakutenRws_HttpResponse($url, $param, 200, array(), json_encode(array(
+            'data' => 'the response'
+        )));
+
+        $httpClient->expects($this->once())
+            ->method('get')
+            ->with(
+                $this->equalTo($url),
+                $this->equalTo($param)
+            )
+            ->will($this->returnValue($httpResponse));
+
+        $clinet = new RakutenRws_Client($httpClient);
+        $clinet->setApplicationId('123');
+        $clinet->setAffiliateId('456');
+        $response = $clinet->execute('DummyAppRakutenApi2');
+        $this->assertInstanceOf('RakutenRws_ApiResponse', $response);
+    }
+
+    /**
+     * testExecute
+     *
+     * @test
+     */
+    public function testExecuteWithOperationAlias()
+    {
+        $httpClient = $this->getMock('RakutenRws_HttpClient', array(
+            'post',
+            'get'
+        ), array(), 'httpClient_for_'.__FUNCTION__);
+
+        $url = 'https://app.rakuten.co.jp/services/api/DummyService/DummyOperation2/19890108';
+        $param = array(
+            'applicationId' => '123',
+            'affiliateId'   => '456'
+        );
+
+        $httpResponse = new RakutenRws_HttpResponse($url, $param, 200, array(), json_encode(array(
+            'data' => 'the response'
+        )));
+
+        $httpClient->expects($this->once())
+            ->method('get')
+            ->with(
+                $this->equalTo($url),
+                $this->equalTo($param)
+            )
+            ->will($this->returnValue($httpResponse));
+
+        $clinet = new RakutenRws_Client($httpClient);
+        $clinet->setApplicationId('123');
+        $clinet->setAffiliateId('456');
+        $response = $clinet->execute('DummyAppRakuten/Api2');
+        $this->assertInstanceOf('RakutenRws_ApiResponse', $response);
+    }
+
+    /**
      *
      * @test
      * @expectedException LogicException
@@ -227,8 +301,6 @@ class RakutenRws_ClientTest extends PHPUnit_Framework_TestCase
     {
         $clinet = new RakutenRws_Client();
 
-        $this->assertInstanceOf('RakutenRws_ApiResponse_RwsResponse', $clinet->execute(
-            'WrongOperation'
-        ));
+        $clinet->execute('WrongOperation');
     }
 }
