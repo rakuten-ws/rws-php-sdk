@@ -86,4 +86,15 @@ abstract class RakutenRws_Api_AppRakutenApi extends RakutenRws_Api_Base
 
         return $appresponse;
     }
+
+    public function setVersion($version)
+    {
+        $version = preg_replace(
+            '/^(\d{4})(\d{2})(\d{2})$/',
+            '\\1-\\2-\\3',
+            $version
+        );
+
+        parent::setVersion($version);
+    }
 }

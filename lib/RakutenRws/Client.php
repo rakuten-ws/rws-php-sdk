@@ -35,7 +35,7 @@ class RakutenRws_Client
      * @throws RakutenRws_Exception
      *
      * option parameter
-     *   - keys 
+     *   - keys
      */
     public function __construct(RakutenRws_HttpClient $httpClient = null, $options = array())
     {
@@ -241,6 +241,9 @@ class RakutenRws_Client
      */
     public function execute($operation, $parameter = array(), $version = null)
     {
+        // remove '/' from operation
+        $operation = preg_replace('/\//', '', $operation);
+
         $className = 'RakutenRws_Api_Definition_'.$operation;
         if (!class_exists($className)) {
             throw new LogicException('Operation is not definied.');

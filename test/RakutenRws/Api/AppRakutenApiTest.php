@@ -179,6 +179,30 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
     /**
      *
      * @test
+     */
+    public function testSetVersionWithoutHyphen()
+    {
+        $clinet = new RakutenRws_Client();
+        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi1($clinet);
+        $api->setVersion('20120108');
+        $this->assertEquals('2012-01-08', $api->getVersion());
+    }
+
+    /**
+     *
+     * @test
+     */
+    public function testSetVersionWithNumber()
+    {
+        $clinet = new RakutenRws_Client();
+        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi1($clinet);
+        $api->setVersion(20120108);
+        $this->assertEquals('2012-01-08', $api->getVersion());
+    }
+
+    /**
+     *
+     * @test
      * @expectedException RakutenRws_Exception
      */
     public function testSetVersion_When_Sets_Wrong_Version()
