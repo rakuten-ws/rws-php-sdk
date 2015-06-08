@@ -21,7 +21,7 @@ Rakuten Web Service SDK for PHP は、PHPアプリケーションから
 
 以下からSDKをダウンロードすることができます。
 
-- [最新版 1.0.6 - zipアーカイブ](https://github.com/rakuten-ws/rws-php-sdk/archive/1.0.6.zip)
+- [最新版 1.1.0 - zipアーカイブ](https://github.com/rakuten-ws/rws-php-sdk/archive/1.1.0.zip)
 - [ソースコード (Github)](https://github.com/rakuten-ws/rws-php-sdk)
 
 また、RWS PHP SDK は、[Packagist](http://packagist.org/) にパッケージ登録を行っています。
@@ -225,6 +225,31 @@ $response = $client->execute('IchibaItemSearch', array(
   'keyword' => 'うどん'
 ));
 ```
+
+旧バージョンからのバージョンアップ
+----------------------------------
+
+バージョン1.1 では、APIの廃止に伴い、以下の操作ができなくなりました。
+
+代わりに、新バージョン・統合さらたバージョンを利用することができます。
+
+* ItemSearch (IchibaItemSearch が利用できます)
+* ItemCodeSearch (IchibaItemSearch が利用できます)
+* ItemRanking (IchibaItemRanking が利用できます)
+* ProductDetail (ProductSearch が利用できます)
+* ProductGenreInfo (ProductSearch が利用できます)
+* ProductMakerInfo
+* GetAreaClass (TravelGetAreaClass が利用できます)
+* GetHotelChainList (TravelGetHoralChainList が利用できます)
+* HotelDetailSearch (TravelHotelDetailSearch が利用できます)
+* HotelRanking (TravelHotelRanking が利用できます)
+* KeywordHotelSearch (TravelHotelSearch が利用できます)
+* SimpleHotelSearch (TravelSimpleHotelSearch が利用できます)
+* VacantHotelSearch (TravelVacantHotelSearch が利用できます)
+* GoraGolfCourseSearch (GoraGoraGolfCourseSearch が利用できます)
+* GoraGolfCourseDetail (GoraGoraGolfCourseDetail が利用できます)
+* GoraPlanSearch (GoraGoraPlanSearch が利用できます)
+* HighCommissionShop (HighCommissionShopList が利用できます)
 
 サンプルコード
 -------------
