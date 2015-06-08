@@ -231,7 +231,7 @@ $response = $client->execute('IchibaItemSearch', array(
 
 バージョン1.1 では、APIの廃止に伴い、以下の操作ができなくなりました。
 
-代わりに、新バージョン・統合さらたバージョンを利用することができます。
+代わりに、新バージョン・統合されたバージョンを利用することができます。
 
 * ItemSearch (IchibaItemSearch が利用できます)
 * ItemCodeSearch (IchibaItemSearch が利用できます)
