@@ -9,12 +9,21 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws;
+
+use Iterator;
+use ArrayAccess;
+use ArrayIterator;
+use LogicException;
+use IteratorAggregate;
+use BadMethodCallException;
+
 /**
  * ApiResponse
  *
  * @package RakutenRws
  */
-abstract class RakutenRws_ApiResponse implements
+abstract class ApiResponse implements
     IteratorAggregate,
     ArrayAccess
 {
@@ -31,9 +40,9 @@ abstract class RakutenRws_ApiResponse implements
      * Constructor
      *
      * @param string $operation The operation
-     * @param RakutenRws_HttpResponse $response
+     * @param HttpResponse $response
      */
-    public function __construct($operation, RakutenRws_HttpResponse $response)
+    public function __construct($operation, HttpResponse $response)
     {
         $this->operation = $operation;
         $this->httpResponse  = $response;
@@ -65,7 +74,7 @@ abstract class RakutenRws_ApiResponse implements
     /**
      * Gets the HttpResponse
      *
-     * @return RakutenRws_HttpResponse
+     * @return HttpResponse
      */
     public function getHttpResponse()
     {

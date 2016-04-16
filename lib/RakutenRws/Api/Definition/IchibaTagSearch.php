@@ -9,13 +9,17 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws\Api\Definition;
+
+use RakutenRws\Api\AppRakutenApi;
+
 /**
  * IchibaTagSearch
  *
  * @package RakutenRws
- * @subpackage Api_Definition
+ * @subpackage Api\Definition
  */
-class RakutenRws_Api_Definition_IchibaTagSearch extends RakutenRws_Api_AppRakutenApi
+class IchibaTagSearch extends AppRakutenApi
 {
     protected
         $isRequiredAccessToken = false,

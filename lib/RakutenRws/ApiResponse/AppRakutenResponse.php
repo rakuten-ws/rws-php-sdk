@@ -9,13 +9,18 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws\ApiResponse;
+
+use RakutenRws\ApiResponse;
+use RakutenRws\Exception;
+
 /**
  * API Response for app.rakuten.co.jp
  *
  * @package RakutenRws
  * @subpackage ApiResponse
  */
-class RakutenRws_ApiResponse_AppRakutenResponse extends RakutenRws_ApiResponse
+class AppRakutenResponse extends ApiResponse
 {
     protected function handleResponse()
     {
@@ -32,7 +37,7 @@ class RakutenRws_ApiResponse_AppRakutenResponse extends RakutenRws_ApiResponse
 
         if (null === $rawData)
         {
-            throw new RakutenRws_Exception();
+            throw new Exception();
         }
 
         $this->data = $rawData;

@@ -9,8 +9,13 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws\HttpClient;
 
-require_once 'HTTP/Client.php';
+use HTTP_Client;
+use RakutenRws\Client;
+use RakutenRws\Exception;
+use RakutenRws\HttpClient;
+use RakutenRws\HttpResponse;
 
 /**
  * Http Client that use PEAR Http_Client
@@ -18,15 +23,24 @@ require_once 'HTTP/Client.php';
  * @package RakutenRws
  * @subpackage HttpClient
  */
-class RakutenRws_HttpClient_PearHttpClient extends RakutenRws_HttpClient
+class PearHttpClient extends HttpClient
 {
     protected
         $client = null;
 
+    public function __construct()
+    {
+        if (!class_exists('HTTP_Client')) {
+            throw new Exception('Failed to include Pear HTTP_Client');
+        }
+
+        parent::__construct();
+    }
+
     protected function getHttpClient()
     {
         if ($this->client === null) {
-            $this->client = new Http_Client();
+            $this->client = new HTTP_Client();
         }
 
         if ($this->proxy !== null) {
@@ -48,7 +62,7 @@ class RakutenRws_HttpClient_PearHttpClient extends RakutenRws_HttpClient
 
         $this->client->setRequestParameter('timeout', $this->timeout);
 
-        $this->client->setDefaultHeader('User-Agent', 'RakutenWebService SDK for PHP-'.RakutenRws_Client::VERSION);
+        $this->client->setDefaultHeader('User-Agent', 'RakutenWebService SDK for PHP-'.Client::VERSION);
 
         return $this->client;
     }
@@ -61,7 +75,7 @@ class RakutenRws_HttpClient_PearHttpClient extends RakutenRws_HttpClient
 
         $response = $client->currentResponse();
 
-        return new RakutenRws_HttpResponse(
+        return new HttpResponse(
             $url,
             $params,
             $response['code'],
@@ -78,7 +92,7 @@ class RakutenRws_HttpClient_PearHttpClient extends RakutenRws_HttpClient
 
         $response = $client->currentResponse();
 
-        return new RakutenRws_HttpResponse(
+        return new HttpResponse(
             $url,
             $params,
             $response['code'],

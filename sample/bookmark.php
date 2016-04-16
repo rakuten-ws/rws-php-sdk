@@ -1,7 +1,9 @@
 <?php
 
-require_once dirname(__FILE__).'/../autoload.php';
-require_once dirname(__FILE__).'/config.php';
+require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/config.php';
+
+use RakutenRws\Client;
 
 $itemCode = isset($_GET['itemCode']) ? $_GET['itemCode'] : null;
 $keyword  = isset($_GET['keyword'])  ? $_GET['keyword']  : '';
@@ -28,7 +30,7 @@ if ($scheme == 'http' && $port == ':80' || $scheme == 'https' && $port == ':443'
 $url = $scheme.'://'.$_SERVER['HTTP_HOST'].$port.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
 
 // Clientインスタンスを生成
-$rwsclient = new RakutenRws_Client();
+$rwsclient = new Client();
 // アプリIDをセット
 $rwsclient->setApplicationId(RAKUTEN_APP_ID);
 // Secretをセット

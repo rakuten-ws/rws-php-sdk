@@ -9,39 +9,77 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws;
+
+use LogicException;
+use RakutenRws\Api\AppRakutenApi;
+use RakutenRws\HttpClient\BasicHttpClient;
+use RakutenRws\HttpClient\CurlHttpClient;
+use RakutenRws\HttpClient\PearHttpClient;
+
 /**
  * Rakuten Web Service Client
  *
  * @package RakutenRws
  */
-class RakutenRws_Client
+class Client
 {
-    const VERSION = '1.1.1-dev';
+    const VERSION = '2.0.0-dev';
 
-    protected
-        $developerId     = null,
-        $secret          = null,
-        $accessToken     = null,
-        $accessTokenInfo = null,
-        $redirectUrl     = null,
-        $httpClient      = null,
-        $affiliateId     = null,
-        $options         = array();
+    /**
+     * @var string
+     */
+    protected $developerId     = null;
+
+    /**
+     * @var string
+     */
+    protected $secret          = null;
+
+    /**
+     * @var string
+     */
+    protected $accessToken     = null;
+
+    /**
+     * @var string
+     */
+    protected $accessTokenInfo = null;
+
+    /**
+     * @var string
+     */
+    protected $redirectUrl     = null;
+
+    /**
+     * @var HttpClient
+     */
+    protected $httpClient      = null;
+
+    /**
+     * @var string
+     */
+    protected $affiliateId     = null;
+
+    /**
+     * @var array
+     */
+    protected $options         = array();
 
     /**
      * Constructor.
      *
-     * @param RakutenRws_HttpClient $httpClient HTTP Client instance
-     * @throws RakutenRws_Exception
+     * @param HttpClient $httpClient HTTP Client instance
+     * @throws Exception
      *
      * option parameter
      *   - keys
      */
-    public function __construct(RakutenRws_HttpClient $httpClient = null, $options = array())
+    public function __construct(HttpClient $httpClient = null, $options = array())
     {
         if (!extension_loaded('openssl')) {
             // @codeCoverageIgnoreStart
-            throw new RakutenRws_Exception('openssl extension is not loaded.');
+            throw new Exception('openssl extension is not loaded.');
             // @codeCoverageIgnoreEnd
         }
 
@@ -49,15 +87,11 @@ class RakutenRws_Client
 
             // @codeCoverageIgnoreStart
             if (function_exists('curl_init')) {
-                $httpClient = new RakutenRws_HttpClient_CurlHttpClient();
+                $httpClient = new CurlHttpClient();
             } else if (version_compare(PHP_VERSION, '5.2.10') >= 0) {
-                $httpClient = new RakutenRws_HttpClient_BasicHttpClient();
+                $httpClient = new BasicHttpClient();
             } else {
-                if (!@include('HTTP/Client.php')) {
-                    throw new RakutenRws_Exception('Failed to include Pear HTTP_Client');
-                }
-
-                $httpClient = new RakutenRws_HttpClient_PearHttpClient();
+                $httpClient = new PearHttpClient();
             }
             // @codeCoverageIgnoreEnd
         }
@@ -213,7 +247,7 @@ class RakutenRws_Client
     /**
      * Gets Http Client instance
      *
-     * @return RakutenRws_HttpClient The Http Client
+     * @return HttpClient The Http Client
      */
     public function getHttpClient()
     {
@@ -234,21 +268,23 @@ class RakutenRws_Client
      * Executes API
      *
      * @param string $operation The operation name
-     * @param array  $parameter The request parameter
-     * @param string $version   The API version
+     * @param array $parameter The request parameter
+     * @param string $version The API version
+     * @return mixed
      * @throws LogicException
-     * @throws RakutenRws_Exception
+     * @throws Exception
      */
     public function execute($operation, $parameter = array(), $version = null)
     {
         // remove '/' from operation
         $operation = preg_replace('/\//', '', $operation);
 
-        $className = 'RakutenRws_Api_Definition_'.$operation;
+        $className = 'RakutenRws\Api\Definition\\'.$operation;
         if (!class_exists($className)) {
             throw new LogicException('Operation is not definied.');
         }
 
+        /** @var AppRakutenApi $api */
         $api = new $className($this, $this->options);
         if ($version !== null) {
             $api->setVersion($version);

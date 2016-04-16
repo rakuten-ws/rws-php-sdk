@@ -9,11 +9,15 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws;
+
+use RuntimeException;
+
 /**
- * RakutenRws_Exception
+ * Exception
  *
  * @package RakutenRws
  */
-class RakutenRws_Exception extends RuntimeException
+class Exception extends RuntimeException
 {
 }

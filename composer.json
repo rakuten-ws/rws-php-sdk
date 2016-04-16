@@ -7,24 +7,41 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Shogo Kawahara",
-            "email": "shogo.a.kawahara@mail.rakuten.com"
+            "name": "Andrew Miller",
+            "email": "andrew.miller@rakuten.com"
         }
     ],
     "require": {
-        "php": ">=5.2.3",
+        "php": ">=5.3.19",
         "ext-openssl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*",
+        "pear-pear.php.net/HTTP_Client": "*"
     },
     "suggest": {
         "ext-curl": "*",
-        "pear-pear/HTTP_Client": "*"
+        "pear-pear.php.net/HTTP_Client": "*"
     },
     "autoload": {
-        "psr-0": {"RakutenRws_": "lib/"}
+        "psr-4": {
+            "RakutenRws\\": "lib/RakutenRws/"
+        }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "RakutenRws\\": "test/RakutenRws/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "https://pear.php.net"
+        }
+    ],
     "extra": {
         "branch-alias": {
-            "dev-master": "1.1.x-dev"
+            "dev-master": "2.0.x-dev"
         }
     }
 }

@@ -1,6 +1,17 @@
 <?php
 
-class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
+namespace RakutenRws\Api;
+
+use RakutenRws\Client;
+use RakutenRws\Exception;
+use RakutenRws\HttpClient;
+use RakutenRws\HttpResponse;
+use PHPUnit_Framework_TestCase;
+use RakutenRws\Api\Definition\DummyAppRakutenApi1;
+use RakutenRws\Api\Definition\DummyAppRakutenApi2;
+use RakutenRws\Api\Definition\DummyAppRakutenApi3;
+
+class AppRakutenApiTest extends PHPUnit_Framework_TestCase
 {
     /**
      *
@@ -8,7 +19,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
      */
     public function testExecuteAppRakutenApi()
     {
-        $httpClient = $this->getMock('RakutenRws_HttpClient', array(
+        $httpClient = $this->getMock('RakutenRws\HttpClient', array(
             'post',
             'get'
         ), array(), 'httpClient_for_'.__FUNCTION__);
@@ -18,7 +29,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             'access_token' => 'abc'
         );
 
-        $httpResponse = new RakutenRws_HttpResponse($url, $param, 200, array(), json_encode(array(
+        $httpResponse = new HttpResponse($url, $param, 200, array(), json_encode(array(
             'Items' => array(array('Item' => 'data'))
         )));
 
@@ -30,7 +41,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue($httpResponse));
 
-        $rwsClient = $this->getMock('RakutenRws_Client', array(
+        $rwsClient = $this->getMock('RakutenRws\Client', array(
             'getHttpClient',
             'getAccessToken',
         ), array(), 'rwsClient_for_'.__FUNCTION__);
@@ -43,7 +54,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             ->method('getAccessToken')
             ->will($this->returnValue('abc'));
 
-        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi1($rwsClient);
+        $api = new DummyAppRakutenApi1($rwsClient);
         $response = $api->execute(array());
 
         $this->assertEquals('DummyService', $api->getService());
@@ -60,7 +71,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
      */
     public function testExecuteNonAuthorizedAppRakutenApi()
     {
-        $httpClient = $this->getMock('RakutenRws_HttpClient', array(
+        $httpClient = $this->getMock('RakutenRws\HttpClient', array(
             'post',
             'get'
         ), array(), 'httpClient_for_'.__FUNCTION__);
@@ -71,7 +82,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             'affiliateId'   => '456'
         );
 
-        $httpResponse = new RakutenRws_HttpResponse($url, $param, 200, array(), json_encode(array(
+        $httpResponse = new HttpResponse($url, $param, 200, array(), json_encode(array(
             'data' => 'the response'
         )));
 
@@ -83,7 +94,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue($httpResponse));
 
-        $rwsClient = $this->getMock('RakutenRws_Client', array(
+        $rwsClient = $this->getMock('RakutenRws\Client', array(
             'getHttpClient',
             'getApplicationId',
             'getAffiliateId'
@@ -101,7 +112,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             ->method('getAffiliateId')
             ->will($this->returnValue('456'));
 
-        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi2($rwsClient);
+        $api = new DummyAppRakutenApi2($rwsClient);
         $response = $api->execute(array());
 
         $this->assertEquals('DummyService', $api->getService());
@@ -118,7 +129,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
      */
     public function testExecutePostAppRakutenApi()
     {
-        $httpClient = $this->getMock('RakutenRws_HttpClient', array(
+        $httpClient = $this->getMock('RakutenRws\HttpClient', array(
             'post',
             'get'
         ), array(), 'httpClient_for_'.__FUNCTION__);
@@ -128,7 +139,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             'access_token' => 'abc'
         );
 
-        $httpResponse = new RakutenRws_HttpResponse($url, $param, 200, array(), json_encode(array(
+        $httpResponse = new HttpResponse($url, $param, 200, array(), json_encode(array(
             'data' => 'the response'
         )));
 
@@ -140,7 +151,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue($httpResponse));
 
-        $rwsClient = $this->getMock('RakutenRws_Client', array(
+        $rwsClient = $this->getMock('RakutenRws\Client', array(
             'getHttpClient',
             'getAccessToken',
         ), array(), 'rwsClient_for_'.__FUNCTION__);
@@ -153,7 +164,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             ->method('getAccessToken')
             ->will($this->returnValue('abc'));
 
-        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi3($rwsClient);
+        $api = new DummyAppRakutenApi3($rwsClient);
         $response = $api->execute(array());
 
         $this->assertEquals('DummyService', $api->getService());
@@ -170,8 +181,8 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
      */
     public function testSetVersion()
     {
-        $clinet = new RakutenRws_Client();
-        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi1($clinet);
+        $clinet = new Client();
+        $api = new DummyAppRakutenApi1($clinet);
         $api->setVersion('2012-01-08');
         $this->assertEquals('2012-01-08', $api->getVersion());
     }
@@ -182,8 +193,8 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
      */
     public function testSetVersionWithoutHyphen()
     {
-        $clinet = new RakutenRws_Client();
-        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi1($clinet);
+        $clinet = new Client();
+        $api = new DummyAppRakutenApi1($clinet);
         $api->setVersion('20120108');
         $this->assertEquals('2012-01-08', $api->getVersion());
     }
@@ -194,8 +205,8 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
      */
     public function testSetVersionWithNumber()
     {
-        $clinet = new RakutenRws_Client();
-        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi1($clinet);
+        $clinet = new Client();
+        $api = new DummyAppRakutenApi1($clinet);
         $api->setVersion(20120108);
         $this->assertEquals('2012-01-08', $api->getVersion());
     }
@@ -203,12 +214,12 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
     /**
      *
      * @test
-     * @expectedException RakutenRws_Exception
+     * @expectedException Exception
      */
     public function testSetVersion_When_Sets_Wrong_Version()
     {
-        $clinet = new RakutenRws_Client();
-        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi1($clinet);
+        $clinet = new Client();
+        $api = new DummyAppRakutenApi1($clinet);
         $api->setVersion('2020-01-08');
     }
 
@@ -218,7 +229,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
      */
     public function testExecuteNonAuthorizedAppRakutenApi_With_callback()
     {
-        $httpClient = $this->getMock('RakutenRws_HttpClient', array(
+        $httpClient = $this->getMock('RakutenRws\HttpClient', array(
             'post',
             'get'
         ), array(), 'httpClient_for_'.__FUNCTION__);
@@ -229,7 +240,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             'affiliateId'   => '456'
         );
 
-        $httpResponse = new RakutenRws_HttpResponse($url, $param, 200, array(), json_encode(array(
+        $httpResponse = new HttpResponse($url, $param, 200, array(), json_encode(array(
             'data' => 'the response'
         )));
 
@@ -241,7 +252,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue($httpResponse));
 
-        $rwsClient = $this->getMock('RakutenRws_Client', array(
+        $rwsClient = $this->getMock('RakutenRws\Client', array(
             'getHttpClient',
             'getApplicationId',
             'getAffiliateId'
@@ -259,7 +270,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             ->method('getAffiliateId')
             ->will($this->returnValue('456'));
 
-        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi2($rwsClient);
+        $api = new DummyAppRakutenApi2($rwsClient);
         $response = $api->execute(array('callback' => 'it_will_be_deleted'));
 
         $this->assertEquals('DummyService', $api->getService());
@@ -276,7 +287,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
      */
     public function testExecuteNonAuthorizedAppRakutenApi_With_format()
     {
-        $httpClient = $this->getMock('RakutenRws_HttpClient', array(
+        $httpClient = $this->getMock('RakutenRws\HttpClient', array(
             'post',
             'get'
         ), array(), 'httpClient_for_'.__FUNCTION__);
@@ -287,7 +298,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             'affiliateId'   => '456'
         );
 
-        $httpResponse = new RakutenRws_HttpResponse($url, $param, 200, array(), json_encode(array(
+        $httpResponse = new HttpResponse($url, $param, 200, array(), json_encode(array(
             'data' => 'the response'
         )));
 
@@ -299,7 +310,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue($httpResponse));
 
-        $rwsClient = $this->getMock('RakutenRws_Client', array(
+        $rwsClient = $this->getMock('RakutenRws\Client', array(
             'getHttpClient',
             'getApplicationId',
             'getAffiliateId'
@@ -317,7 +328,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             ->method('getAffiliateId')
             ->will($this->returnValue('456'));
 
-        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi2($rwsClient);
+        $api = new DummyAppRakutenApi2($rwsClient);
         $response = $api->execute(array('format' => 'it_will_be_deleted'));
 
         $this->assertEquals('DummyService', $api->getService());
@@ -331,11 +342,11 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
     /**
      *
      * @test
-     * @expectedException RakutenRws_Exception
+     * @expectedException Exception
      */
     public function testExecuteAppRakutenApi_with_BrokenData()
     {
-        $httpClient = $this->getMock('RakutenRws_HttpClient', array(
+        $httpClient = $this->getMock('RakutenRws\HttpClient', array(
             'post',
             'get'
         ), array(), 'httpClient_for_'.__FUNCTION__);
@@ -345,7 +356,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             'access_token' => 'abc'
         );
 
-        $httpResponse = new RakutenRws_HttpResponse($url, $param, 200, array(), json_encode(array(
+        $httpResponse = new HttpResponse($url, $param, 200, array(), json_encode(array(
             'Ooooooohhhhhhhh!!!!'
         )));
 
@@ -357,7 +368,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue($httpResponse));
 
-        $rwsClient = $this->getMock('RakutenRws_Client', array(
+        $rwsClient = $this->getMock('RakutenRws\Client', array(
             'getHttpClient',
             'getAccessToken',
         ), array(), 'rwsClient_for_'.__FUNCTION__);
@@ -370,7 +381,7 @@ class RakutenRws_AppRakutenApiTest extends PHPUnit_Framework_TestCase
             ->method('getAccessToken')
             ->will($this->returnValue('abc'));
 
-        $api = new RakutenRws_Api_Definition_DummyAppRakutenApi1($rwsClient);
+        $api = new DummyAppRakutenApi1($rwsClient);
         $api->execute(array());
     }
 }

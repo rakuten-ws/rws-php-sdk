@@ -9,13 +9,18 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws\Api\Definition;
+
+use RakutenRws\Exception;
+use RakutenRws\Api\AppRakutenApi;
+
 /**
  * FavoriteBookmarkList
  *
  * @package RakutenRws
- * @subpackage Api_Definition
+ * @subpackage Api\Definition
  */
-class RakutenRws_Api_Definition_FavoriteBookmarkList extends RakutenRws_Api_AppRakutenApi
+class FavoriteBookmarkList extends AppRakutenApi
 {
     protected
         $versionMap = array(
@@ -39,7 +44,7 @@ class RakutenRws_Api_Definition_FavoriteBookmarkList extends RakutenRws_Api_AppR
         if ($response->isOk()) {
             $data = $response->getData();
             if (!isset($data['items'])) {
-                throw new RakutenRws_Exception();
+                throw new Exception();
             }
 
             $items = array();

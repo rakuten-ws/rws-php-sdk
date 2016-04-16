@@ -9,13 +9,20 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws\HttpClient;
+
+use RakutenRws\Client;
+use RakutenRws\Exception;
+use RakutenRws\HttpClient;
+use RakutenRws\HttpResponse;
+
 /**
  * Http Client that use curl extension
  *
  * @package RakutenRws
  * @subpackage HttpClient
  */
-class RakutenRws_HttpClient_CurlHttpClient extends RakutenRws_HttpClient
+class CurlHttpClient extends HttpClient
 {
     protected
         $curlOptions = array();
@@ -34,7 +41,7 @@ class RakutenRws_HttpClient_CurlHttpClient extends RakutenRws_HttpClient
             curl_setopt($ch, CURLOPT_PROXY, $this->proxy);
         }
 
-        curl_setopt($ch, CURLOPT_USERAGENT, 'RakutenWebService SDK for PHP-'.RakutenRws_Client::VERSION);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'RakutenWebService SDK for PHP-'.Client::VERSION);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, true);
@@ -50,7 +57,7 @@ class RakutenRws_HttpClient_CurlHttpClient extends RakutenRws_HttpClient
 
         if ($rawResponse === false) {
             $msg = curl_error($curl);
-            throw new RakutenRws_Exception('http reqeust error: '.$msg);
+            throw new Exception('http reqeust error: '.$msg);
         }
 
         $parts = preg_split('/((?:\\r?\\n){2})/', $rawResponse, -1, PREG_SPLIT_DELIM_CAPTURE);
@@ -79,7 +86,7 @@ class RakutenRws_HttpClient_CurlHttpClient extends RakutenRws_HttpClient
             $headers[] = $header;
         }
 
-        return new RakutenRws_HttpResponse(
+        return new HttpResponse(
             $url,
             $params,
             $code,

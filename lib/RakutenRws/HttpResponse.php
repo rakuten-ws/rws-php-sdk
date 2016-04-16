@@ -9,12 +9,14 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws;
+
 /**
- * RakutenRws_HttpResponse
+ * HttpResponse
  *
  * @package RakutenRws
  */
-class RakutenRws_HttpResponse
+class HttpResponse
 {
     protected
         $requestUrl = null,

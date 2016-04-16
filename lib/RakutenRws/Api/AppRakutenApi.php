@@ -9,13 +9,18 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws\Api;
+
+use RakutenRws\Exception;
+use RakutenRws\ApiResponse\AppRakutenResponse;
+
 /**
  * API for app.rakuten.co.jp
  *
  * @package RakutenRws
  * @subpackage Api
  */
-abstract class RakutenRws_Api_AppRakutenApi extends RakutenRws_Api_Base
+abstract class AppRakutenApi extends Base
 {
     const BASE_URL = 'https://app.rakuten.co.jp/services/api';
 
@@ -68,12 +73,12 @@ abstract class RakutenRws_Api_AppRakutenApi extends RakutenRws_Api_Base
 
         $response = $client->$method($url, $parameter);
 
-        $appresponse = new RakutenRws_ApiResponse_AppRakutenResponse($this->getOperationName(), $response);
+        $appresponse = new AppRakutenResponse($this->getOperationName(), $response);
 
         if ($this->autoSetIterator && $appresponse->isOk()) {
             $data = $appresponse->getData();
             if (!isset($data[$this->arrayName])) {
-                throw new RakutenRws_Exception();
+                throw new Exception();
             }
 
             $items = array();

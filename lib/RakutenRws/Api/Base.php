@@ -9,13 +9,19 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws\Api;
+
+use LogicException;
+use RakutenRws\Client;
+use RakutenRws\Exception;
+
 /**
  * API base class
  *
  * @package RakutenRws
  * @subpackage Api
  */
-abstract class RakutenRws_Api_Base implements RakutenRws_Api_ApiInterface
+abstract class Base implements ApiInterface
 {
     protected
         $version         = null,
@@ -24,7 +30,7 @@ abstract class RakutenRws_Api_Base implements RakutenRws_Api_ApiInterface
         $autoSetIterator = false,
         $options         = array();
 
-    public function __construct(RakutenRws_Client $client, $options = array())
+    public function __construct(Client $client, $options = array())
     {
         $this->options = $options;
         $this->client  = $client;
@@ -38,7 +44,7 @@ abstract class RakutenRws_Api_Base implements RakutenRws_Api_ApiInterface
 
     public function getOperationName()
     {
-        $className = explode('_', get_class($this));
+        $className = explode('\\', get_class($this));
         return end($className);
     }
 
@@ -59,7 +65,7 @@ abstract class RakutenRws_Api_Base implements RakutenRws_Api_ApiInterface
     public function setVersion($version)
     {
         if (!in_array($version, $this->getAvailableVersions())) {
-            throw new RakutenRws_Exception(sprintf('version %s is not defined.', $version));
+            throw new Exception(sprintf('version %s is not defined.', $version));
         }
 
         $this->version = $version;

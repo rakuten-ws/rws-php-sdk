@@ -20,10 +20,6 @@
     <filter>
         <whitelist>
             <directory suffix=".php">./lib/</directory>
-            <exclude>
-                <directory suffix=".php">./lib/RakutenRws/HttpClient</directory>
-                <directory suffix=".php">./lib/RakutenRws/Api/Definition</directory>
-            </exclude>
         </whitelist>
     </filter>
 </phpunit>

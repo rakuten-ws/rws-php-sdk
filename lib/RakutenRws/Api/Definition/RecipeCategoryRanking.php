@@ -9,13 +9,18 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws\Api\Definition;
+
+use RakutenRws\Exception;
+use RakutenRws\Api\AppRakutenApi;
+
 /**
  * RecipeCategoryList
  *
  * @package RakutenRws
- * @subpackage Api_Definition
+ * @subpackage Api\Definition
  */
-class RakutenRws_Api_Definition_RecipeCategoryRanking extends RakutenRws_Api_AppRakutenApi
+class RecipeCategoryRanking extends AppRakutenApi
 {
     protected
         $isRequiredAccessToken = false,
@@ -40,7 +45,7 @@ class RakutenRws_Api_Definition_RecipeCategoryRanking extends RakutenRws_Api_App
         if ($appresponse->isOk()) {
             $data = $appresponse->getData();
             if (!isset($data['result'])) {
-                throw new RakutenRws_Exception();
+                throw new Exception();
             }
 
             $appresponse->setIterator($data['result']);

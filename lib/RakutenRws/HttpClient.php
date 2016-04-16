@@ -9,16 +9,22 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws;
+
 /**
- * RakutenRws_HttpClient
+ * HttpClient
  *
  * @package RakutenRws
  */
-abstract class RakutenRws_HttpClient
+abstract class HttpClient
 {
     protected
         $proxy = null,
         $timeout = 10;
+
+    public function __construct()
+    {
+    }
 
     public function setProxy($proxy) {
         $this->proxy = $proxy;

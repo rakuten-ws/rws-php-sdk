@@ -1,20 +1,26 @@
 <?php
 
-class RakutenRws_ApiResponse_AppRakutenResponseTest extends PHPUnit_Framework_TestCase
+namespace RakutenRws\ApiResponse;
+
+use RakutenRws\Exception;
+use RakutenRws\HttpResponse;
+use PHPUnit_Framework_TestCase;
+
+class AppRakutenResponseTest extends PHPUnit_Framework_TestCase
 {
     public function test() {
         $data = array(
             'data' => 'the data'
         );
 
-        $httpResponse = new RakutenRws_HttpResponse(
+        $httpResponse = new HttpResponse(
             'http://example.com',
             array(),
             200,
             array(),
             json_encode($data)
         );
-        $response = new RakutenRws_ApiResponse_AppRakutenResponse('operation', $httpResponse);
+        $response = new AppRakutenResponse('operation', $httpResponse);
 
         $response->setIterator(array('foo', 'bar'));
 
@@ -31,7 +37,7 @@ class RakutenRws_ApiResponse_AppRakutenResponseTest extends PHPUnit_Framework_Te
     }
 
     public function testError() {
-        $httpResponse = new RakutenRws_HttpResponse(
+        $httpResponse = new HttpResponse(
             'http://example.com',
             array(),
             404,
@@ -41,7 +47,7 @@ class RakutenRws_ApiResponse_AppRakutenResponseTest extends PHPUnit_Framework_Te
                 'error_description' => 'not found'
             ))
         );
-        $response = new RakutenRws_ApiResponse_AppRakutenResponse('operation', $httpResponse);
+        $response = new AppRakutenResponse('operation', $httpResponse);
 
         $this->assertFalse($response->isOk());
         $this->assertEquals(404, $response->getCode());
@@ -50,16 +56,16 @@ class RakutenRws_ApiResponse_AppRakutenResponseTest extends PHPUnit_Framework_Te
 
     /**
      *
-     * @expectedException RakutenRws_Exception
+     * @expectedException Exception
      */
     public function testBrokenData() {
-        $httpResponse = new RakutenRws_HttpResponse(
+        $httpResponse = new HttpResponse(
             'http://example.com',
             array(),
             404,
             array(),
             ''
         );
-        new RakutenRws_ApiResponse_AppRakutenResponse('operation', $httpResponse);
+        new AppRakutenResponse('operation', $httpResponse);
     }
 }

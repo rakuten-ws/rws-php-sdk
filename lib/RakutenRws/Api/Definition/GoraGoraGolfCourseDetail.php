@@ -9,13 +9,17 @@
  * file that was distributed with source code.
  */
 
+namespace RakutenRws\Api\Definition;
+
+use RakutenRws\Api\AppRakutenApi;
+
 /**
  * GoraGoraGolfCourseDetail
  *
  * @package RakutenRws
- * @subpackage Api_Definition
+ * @subpackage Api\Definition
  */
-class RakutenRws_Api_Definition_GoraGoraGolfCourseDetail extends RakutenRws_Api_AppRakutenApi
+class GoraGoraGolfCourseDetail extends AppRakutenApi
 {
     protected
         $isRequiredAccessToken = false,
