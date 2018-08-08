@@ -80,37 +80,37 @@ if ($response->isOk()) {
 ```
 You can pass "API Name (string)", "Request Paramters (array)", and
 "version" to *RakutenRws_Client::execute()* method.
-"version" is an optional parameter. If you don't specify the "version" then the library will 
+"version" is an optional parameter. If you don't specify the "version" then the library will
 auotmatically select the latest version.
 
 The following APIs support [Iterator (http://php.net/manual/en/class.iterator.php)],
 so you can access each item's data with a foreach statement.
 
-* AuctionGenreKeywordSearch
-* AuctionItemCodeSearch
-* AuctionItemSearch
-* BooksBookSearch
-* BooksCDSearch
-* BooksDVDSearch
-* BooksForeignBookSearch
-* BooksGameSearch
-* BooksMagazineSearch
-* BooksSoftwareSearch
-* BooksTotalSearch
-* FavoriteBookmarkList
-* GoraGolfCourseDetail
-* GoraGolfCourseSearch
-* GoraPlanSearch
-* HighCommissionShopList
-* IchibaItemRanking
-* IchibaItemSearch
-* KoboEbookSearch
-* ProductSearch
-* RecipeCategoryRanking
-* TravelHotelDetailSearch
-* TravelKeywordHotelSearch
-* TravelSimpleHotelSearch
-* TravelVacantHotelSearch
+- AuctionGenreKeywordSearch
+- AuctionItemCodeSearch
+- AuctionItemSearch
+- BooksBookSearch
+- BooksCDSearch
+- BooksDVDSearch
+- BooksForeignBookSearch
+- BooksGameSearch
+- BooksMagazineSearch
+- BooksSoftwareSearch
+- BooksTotalSearch
+- FavoriteBookmarkList
+- GoraGolfCourseDetail
+- GoraGolfCourseSearch
+- GoraPlanSearch
+- HighCommissionShopList
+- IchibaItemRanking
+- IchibaItemSearch
+- KoboEbookSearch
+- ProductSearch
+- RecipeCategoryRanking
+- TravelHotelDetailSearch
+- TravelKeywordHotelSearch
+- TravelSimpleHotelSearch
+- TravelVacantHotelSearch
 
 Example:
 
@@ -228,7 +228,7 @@ $response = $client->execute('ItemSearch', array(
 Sample Code
 -----------
 
-- There is sample code in the [sample] (https://github.com/rakuten-ws/rws-php-sdk/tree/master/sample) directory.
+- There is sample code in the [sample](https://github.com/rakuten-ws/rws-php-sdk/tree/master/sample) directory.
 - Please rename *config.php.sample* and set Application ID, Application Secret and Affiliate ID.
 
 Official API Document
