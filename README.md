@@ -22,7 +22,7 @@ Rakuten Web Service SDK for PHP は、PHPアプリケーションから
 以下からSDKをダウンロードすることができます。
 
 - [最新版 1.1.0 - zipアーカイブ](https://github.com/rakuten-ws/rws-php-sdk/archive/1.1.0.zip)
-- [ソースコード (Github)](https://github.com/rakuten-ws/rws-php-sdk)
+- [ソースコード (GitHub)](https://github.com/rakuten-ws/rws-php-sdk)
 
 また、RWS PHP SDK は、[Packagist](http://packagist.org/) にパッケージ登録を行っています。
 そのため、 [Composer](http://getcomposer.org/) を通してパッケージを入手することができます。
@@ -31,7 +31,7 @@ composer を入手します
 
     curl -s http://getcomposer.org/installer | php
 
-あなたの開発プロジェクトのルートに composer.json を作成します。
+あなたの開発プロジェクトのルートディレクトリに composer.json を作成します。
 
     {
         "require": {
@@ -233,28 +233,28 @@ $response = $client->execute('IchibaItemSearch', array(
 
 代わりに、新バージョン・統合されたバージョンを利用することができます。
 
-* ItemSearch (IchibaItemSearch が利用できます)
-* ItemCodeSearch (IchibaItemSearch が利用できます)
-* ItemRanking (IchibaItemRanking が利用できます)
-* ProductDetail (ProductSearch が利用できます)
-* ProductGenreInfo (ProductSearch が利用できます)
-* ProductMakerInfo
-* GetAreaClass (TravelGetAreaClass が利用できます)
-* GetHotelChainList (TravelGetHoralChainList が利用できます)
-* HotelDetailSearch (TravelHotelDetailSearch が利用できます)
-* HotelRanking (TravelHotelRanking が利用できます)
-* KeywordHotelSearch (TravelHotelSearch が利用できます)
-* SimpleHotelSearch (TravelSimpleHotelSearch が利用できます)
-* VacantHotelSearch (TravelVacantHotelSearch が利用できます)
-* GoraGolfCourseSearch (GoraGoraGolfCourseSearch が利用できます)
-* GoraGolfCourseDetail (GoraGoraGolfCourseDetail が利用できます)
-* GoraPlanSearch (GoraGoraPlanSearch が利用できます)
-* HighCommissionShop (HighCommissionShopList が利用できます)
+- ItemSearch (IchibaItemSearch が利用できます)
+- ItemCodeSearch (IchibaItemSearch が利用できます)
+- ItemRanking (IchibaItemRanking が利用できます)
+- ProductDetail (ProductSearch が利用できます)
+- ProductGenreInfo (ProductSearch が利用できます)
+- ProductMakerInfo
+- GetAreaClass (TravelGetAreaClass が利用できます)
+- GetHotelChainList (TravelGetHoralChainList が利用できます)
+- HotelDetailSearch (TravelHotelDetailSearch が利用できます)
+- HotelRanking (TravelHotelRanking が利用できます)
+- KeywordHotelSearch (TravelHotelSearch が利用できます)
+- SimpleHotelSearch (TravelSimpleHotelSearch が利用できます)
+- VacantHotelSearch (TravelVacantHotelSearch が利用できます)
+- GoraGolfCourseSearch (GoraGoraGolfCourseSearch が利用できます)
+- GoraGolfCourseDetail (GoraGoraGolfCourseDetail が利用できます)
+- GoraPlanSearch (GoraGoraPlanSearch が利用できます)
+- HighCommissionShop (HighCommissionShopList が利用できます)
 
 サンプルコード
 -------------
 
-- [sample] (https://github.com/rakuten-ws/rws-php-sdk/tree/master/sample) ディレクトリにサンプルを用意しています。
+- [sample](https://github.com/rakuten-ws/rws-php-sdk/tree/master/sample) ディレクトリにサンプルを用意しています。
 - config.php.sample を config.php にリネームし、アプリID, application_secret をセットすることで動作します。
 
 公開APIドキュメント
