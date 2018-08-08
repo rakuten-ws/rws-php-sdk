@@ -27,7 +27,7 @@ Get composer
 
     curl -s http://getcomposer.org/installer | php
 
-Create *composer.json* file in the project root:
+Create *composer.json* file in the project's root directory:
 
 
     {

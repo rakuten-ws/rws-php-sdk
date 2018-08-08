@@ -31,7 +31,7 @@ composer を入手します
 
     curl -s http://getcomposer.org/installer | php
 
-あなたの開発プロジェクトのルートに composer.json を作成します。
+あなたの開発プロジェクトのルートディレクトリに composer.json を作成します。
 
     {
         "require": {
