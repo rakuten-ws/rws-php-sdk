@@ -21,6 +21,7 @@ class RakutenRws_Api_Definition_IchibaItemRanking extends RakutenRws_Api_AppRaku
         $autoSetIterator = true,
         $isRequiredAccessToken = false,
         $versionMap = array(
+            '2017-06-28' => '20170628',
             '2012-09-27' => '20120927'
         );
 
