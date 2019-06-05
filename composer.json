@@ -1,7 +1,7 @@
 {
     "name": "rakuten-ws/rws-php-sdk",
     "type": "library",
-    "homepage": "http://webservice.rakuten.co.jp",
+    "homepage": "https://webservice.rakuten.co.jp",
     "description": "The SDK of Rakuten Web Service",
     "keywords": ["WebAPI", "Client", "SDK"],
     "license": "MIT",
@@ -12,19 +12,28 @@
         }
     ],
     "require": {
-        "php": ">=5.2.3",
+        "php": ">=7.1.0",
         "ext-openssl": "*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "~7.5"
+    },
     "suggest": {
-        "ext-curl": "*",
-        "pear-pear/HTTP_Client": "*"
+        "ext-curl": "*"
     },
     "autoload": {
-        "psr-0": {"RakutenRws_": "lib/"}
+        "psr-4": {
+            "Rakuten\\WebService\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rakuten\\WebService\\": "tests/"
+        }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.1.x-dev"
+            "dev-master": "2.0.x-dev"
         }
     }
 }

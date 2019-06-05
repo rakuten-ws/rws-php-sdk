@@ -1,38 +1,36 @@
 Rakuten Web Service SDK for PHP
 ===============================
 
-[![Build Status](https://secure.travis-ci.org/rakuten-ws/rws-php-sdk.png?branch=master)](http://travis-ci.org/rakuten-ws/rws-php-sdk)
+[![Build Status](https://secure.travis-ci.org/rakuten-ws/rws-php-sdk.png?branch=master)](https://travis-ci.org/rakuten-ws/rws-php-sdk)
 
 Rakuten Web Service SDK for PHP is a library to make it easy to connect to the Rakuten APIs.
 
 Requirement
 -----------
 
-- PHP5.2.3+ (Recommended: PHP5.2.10+ with [curl extension](http://php.net/manual/en/book.curl.php))
-- If you want to use this library on PHP5.2.10-, please install [HTTP_Client](http://pear.php.net/manual/en/package.http.http-client.php) on PEAR
-  or curl extension.
+- PHP 7.1.0+ (Recommended: PHP 7.3.0+ with [curl extension](https://php.net/manual/en/book.curl.php))
 
 Download
 --------
 
 You can download SDK from following links.
 
-- [Stable 1.1.0 - zip](https://github.com/rakuten-ws/rws-php-sdk/archive/1.1.0.zip)
+- [Stable 2.0.0 - zip](https://github.com/rakuten-ws/rws-php-sdk/archive/2.0.0.zip)
 - [Source Code (Github)](https://github.com/rakuten-ws/rws-php-sdk)
 
-RWS PHP SDK is registered at [Packagist](http://packagist.org/).
-Therefore, you can get and manage the library with [Composer](http://getcomposer.org).
+RWS PHP SDK is registered at [Packagist](https://packagist.org/).
+Therefore, you can get and manage the library with [Composer](https://getcomposer.org).
 
 Get composer
 
-    curl -s http://getcomposer.org/installer | php
+    curl -s https://getcomposer.org/installer | php
 
 Create *composer.json* file in the project root:
 
 
     {
         "require": {
-            "rakuten-ws/rws-php-sdk": "1.*"
+            "rakuten-ws/rws-php-sdk": "2.*"
         }
     }
 
@@ -44,10 +42,9 @@ Install
 Basic Usage
 -----------
 
-Please register your application using our Web Service site (http://webservice.rakuten.co.jp).
+Please register your application using our Web Service site (https://webservice.rakuten.co.jp).
 
-Next, load *autoload.php* in your application.
-The *autoload.php* file is in the same directory as this readme file.
+Next, load *vendor/autoload.php* in your application.
 Now you can use the library.
 
 For APIs that don't need user authorization, like IchibaItemSearch API and Books API,
@@ -56,9 +53,9 @@ you can fetch data by following this sample code.
 ```php
 <?php
 
-require_once '/path/to/sdk-dir/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$client = new RakutenRws_Client();
+$client = new Rakuten\WebService\Client();
 // Please set your Application ID
 $client->setApplicationId('YOUR_APPLICATION_ID');
 
@@ -79,11 +76,11 @@ if ($response->isOk()) {
 }
 ```
 You can pass "API Name (string)", "Request Paramters (array)", and
-"version" to *RakutenRws_Client::execute()* method.
+"version" to *Rakuten\WebService\Client::execute()* method.
 "version" is an optional parameter. If you don't specify the "version" then the library will 
 auotmatically select the latest version.
 
-The following APIs support [Iterator (http://php.net/manual/en/class.iterator.php)],
+The following APIs support [Iterator (https://php.net/manual/en/class.iterator.php)],
 so you can access each item's data with a foreach statement.
 
 * AuctionGenreKeywordSearch
@@ -117,9 +114,9 @@ Example:
 ```php
 <?php
 
-require_once '/path/to/sdk-dir/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$client = new RakutenRws_Client();
+$client = new Rakuten\WebService\Client();
 $client->setApplicationId('YOUR_APPLICATION_ID');
 $client->setAffiliateId('YOUR_AFFILIATE_ID');
 
@@ -141,14 +138,14 @@ To access APIs that need user's authorization, like the RakutenBookmark API,
 you need to get an *access_token* in advance.
 
 First, send the user to the authorization page. You can get the authorization page URL with the following code.
-At the same time, please don't forget the scope in *RakutenRws_Client::getAuthorizeUrl()*.
+At the same time, please don't forget the scope in *Rakuten\WebService\Client::getAuthorizeUrl()*.
 
 ```php
 <?php
 
-require_once '/path/to/sdk-dir/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$client = new RakutenRws_Client();
+$client = new Rakuten\WebService\Client();
 // Set Application ID
 $client->setApplicationId('YOUR_APPLICATION_ID');
 // Set Application Secret
@@ -167,9 +164,9 @@ You can access API by this *access_token*.
 ```php
 <?php
 
-require_once '/path/to/sdk-dir/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$client = new RakutenRws_Client();
+$client = new Rakuten\WebService\Client();
 // Set Application ID
 $client->setApplicationId('YOUR_APPLICATION_ID');
 // Set Application Secret
@@ -203,16 +200,16 @@ if ($response->isOk()) {
 Proxy Configuration
 -------------------
 
-You can use this API with a proxy. Please set proxy information with *RakutenRws_Client::setProxy()*.
+You can use this API with a proxy. Please set proxy information with *Rakuten\WebService\Client::setProxy()*.
 
 Example:
 
 ```php
 <?php
 
-require_once '/path/to/sdk-dir/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$client = new RakutenRws_Client();
+$client = new Rakuten\WebService\Client();
 // Set proxy
 $client->setProxy('proxy-host.example.com:port');
 $client->setApplicationId('YOUR_APPLICATION_ID');
@@ -228,19 +225,19 @@ $response = $client->execute('ItemSearch', array(
 Sample Code
 -----------
 
-- There is sample code in the [sample] (https://github.com/rakuten-ws/rws-php-sdk/tree/master/sample) directory.
+- There is sample code in the [sample](https://github.com/rakuten-ws/rws-php-sdk/tree/master/sample) directory.
 - Please rename *config.php.sample* and set Application ID, Application Secret and Affiliate ID.
 
 Official API Document
 ---------------------
 
-- http://webservice.rakuten.co.jp
+- https://webservice.rakuten.co.jp
 
 
 SDK API Document
 ----------------
 
-- [API Docs](http://webservice.rakuten.co.jp/sdkapi/php/)
+- [API Docs](https://webservice.rakuten.co.jp/sdkapi/php/)
 
 License
 -------

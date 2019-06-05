@@ -3,7 +3,7 @@ Rakuten Web Service SDK for PHP
 
 There is an English version in [here](https://github.com/rakuten-ws/rws-php-sdk/blob/master/README.en.md).
 
-[![Build Status](https://secure.travis-ci.org/rakuten-ws/rws-php-sdk.png?branch=master)](http://travis-ci.org/rakuten-ws/rws-php-sdk)
+[![Build Status](https://secure.travis-ci.org/rakuten-ws/rws-php-sdk.png?branch=master)](https://travis-ci.org/rakuten-ws/rws-php-sdk)
 
 Rakuten Web Service SDK for PHP は、PHPアプリケーションから
 楽天が提供しているAPIに、簡単にアクセスすることができるSDK
@@ -12,24 +12,22 @@ Rakuten Web Service SDK for PHP は、PHPアプリケーションから
 動作要件
 --------
 
-- PHP5.2.3以上 (PHP5.2.10以上, [curl拡張](http://php.net/manual/ja/book.curl.php) 導入を推奨)
-- PHP5.2.10未満を利用する場合、PEAR の [HTTP_Client](http://pear.php.net/manual/ja/package.http.http-client.php)
-  か curl拡張の導入が必要です。
+- PHP7.1.0以上 (PHP5.2.10以上, [curl拡張](https://php.net/manual/ja/book.curl.php) 導入を推奨)
 
 ダウンロード
 ------------
 
 以下からSDKをダウンロードすることができます。
 
-- [最新版 1.1.0 - zipアーカイブ](https://github.com/rakuten-ws/rws-php-sdk/archive/1.1.0.zip)
+- [最新版 2.0.0 - zipアーカイブ](https://github.com/rakuten-ws/rws-php-sdk/archive/2.0.0.zip)
 - [ソースコード (Github)](https://github.com/rakuten-ws/rws-php-sdk)
 
-また、RWS PHP SDK は、[Packagist](http://packagist.org/) にパッケージ登録を行っています。
-そのため、 [Composer](http://getcomposer.org/) を通してパッケージを入手することができます。
+また、RWS PHP SDK は、[Packagist](https://packagist.org/) にパッケージ登録を行っています。
+そのため、 [Composer](https://getcomposer.org/) を通してパッケージを入手することができます。
 
 composer を入手します
 
-    curl -s http://getcomposer.org/installer | php
+    curl -s https://getcomposer.org/installer | php
 
 あなたの開発プロジェクトのルートに composer.json を作成します。
 
@@ -47,20 +45,19 @@ composer を通してパッケージを入手します
 基本的な使い方
 --------------
 
-事前に、楽天ウェブサービスのドキュメントページ(http://webservice.rakuten.co.jp)
+事前に、楽天ウェブサービスのドキュメントページ(https://webservice.rakuten.co.jp)
 にて、アプリ登録を行ってください。
 
-このドキュメントと同じディレクトリにある *autoload.php* を読み込むことにより、
-SDK の利用準備が整います。
+*vendor/autoload.php*を読み込むことにより、SDKの利用準備が整います。
 
 ユーザ認証の必要のない、APIについては、以下のように情報を取得することができます。
 
 ```php
 <?php
 
-require_once '/path/to/sdk-dir/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$client = new RakutenRws_Client();
+$client = new Rakuten\WebService\Client();
 // アプリID (デベロッパーID) をセットします
 $client->setApplicationId('YOUR_APPLICATION_ID');
 
@@ -81,7 +78,7 @@ if ($response->isOk()) {
 }
 ```
 
-*RakutenRws_Client::execute()* には、API名、パラメータ、バージョンを
+*Rakuten\WebService\Client::execute()* には、API名、パラメータ、バージョンを
 指定します。そのうち、バージョンについては省略することが可能で、
 省略した場合、自動的にSDKが指定した最新バージョンを選択します。
 
@@ -119,9 +116,9 @@ foreach で 情報(商品情報・施設情報など) を順次取得するこ�
 ```php
 <?php
 
-require_once '/path/to/sdk-dir/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$client = new RakutenRws_Client();
+$client = new Rakuten\WebService\Client();
 $client->setApplicationId('YOUR_APPLICATION_ID');
 $client->setAffiliateId('YOUR_AFFILIATE_ID');
 
@@ -143,14 +140,14 @@ FavoriteBookmarkAPI (楽天ブックマーク系API) のようなユーザ認証
 APIを使う場合は、 *access_token* を取得する必要があります。
 
 まず、ユーザを認証ページに誘導してください。認証ページのURLは、以下のように取得することができます。
-この時、 *RakutenRws_Client::getAuthorizeUrl()* には、API利用スコープを設定することを忘れないください。
+この時、 *Rakuten\WebService\Client::getAuthorizeUrl()* には、API利用スコープを設定することを忘れないください。
 
 ```php
 <?php
 
-require_once '/path/to/sdk-dir/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$client = new RakutenRws_Client();
+$client = new Rakuten\WebService\Client();
 // アプリID (デベロッパーID) をセットします
 $client->setApplicationId('YOUR_APPLICATION_ID');
 // Secret をセットします
@@ -169,9 +166,9 @@ echo $client->getAuthorizeUrl('rakuten_favoritebookmark_read');
 ```php
 <?php
 
-require_once '/path/to/sdk-dir/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$client = new RakutenRws_Client();
+$client = new Rakuten\WebService\Client();
 // アプリID (デベロッパーID) をセットします
 $client->setApplicationId('YOUR_APPLICATION_ID');
 // Secret をセットします
@@ -206,16 +203,16 @@ if ($response->isOk()) {
 プロキシの設定
 --------------
 
-*RakutenRws_Client::setProxy()* で、プロキシを通してAPIにアクセスすることができます。
+*Rakuten\WebService\Client::setProxy()* で、プロキシを通してAPIにアクセスすることができます。
 
 以下が利用例になります
 
 ```php
 <?php
 
-require_once '/path/to/sdk-dir/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$client = new RakutenRws_Client();
+$client = new Rakuten\WebService\Client();
 $client->setProxy('proxy-host.example.com:port');
 $client->setApplicationId('YOUR_APPLICATION_ID');
 $client->setAffiliateId('YOUR_AFFILIATE_ID');
@@ -254,18 +251,18 @@ $response = $client->execute('IchibaItemSearch', array(
 サンプルコード
 -------------
 
-- [sample] (https://github.com/rakuten-ws/rws-php-sdk/tree/master/sample) ディレクトリにサンプルを用意しています。
+- [sample](https://github.com/rakuten-ws/rws-php-sdk/tree/master/sample) ディレクトリにサンプルを用意しています。
 - config.php.sample を config.php にリネームし、アプリID, application_secret をセットすることで動作します。
 
 公開APIドキュメント
 -------------------
 
-- http://webservice.rakuten.co.jp
+- https://webservice.rakuten.co.jp
 
 SDK API Document
 ----------------
 
-- [API Docs](http://webservice.rakuten.co.jp/sdkapi/php/)
+- [API Docs](https://webservice.rakuten.co.jp/sdkapi/php/)
 
 ライセンス
 ----------
