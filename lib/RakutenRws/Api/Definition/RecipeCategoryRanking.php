@@ -20,6 +20,7 @@ class RakutenRws_Api_Definition_RecipeCategoryRanking extends RakutenRws_Api_App
     protected
         $isRequiredAccessToken = false,
         $versionMap = array(
+            '2017-04-26' => '20170426',
             '2012-11-21' => '20121121'
         );
 

@@ -23,6 +23,7 @@ class RakutenRws_Api_Definition_TravelKeywordHotelSearch extends RakutenRws_Api_
         $entityName = 'hotel',
         $isRequiredAccessToken = false,
         $versionMap = array(
+            '2017-04-26' => '20170426',
             '2013-10-24' => '20131024',
         );
 
