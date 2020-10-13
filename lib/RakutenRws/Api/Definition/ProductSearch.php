@@ -23,6 +23,7 @@ class RakutenRws_Api_Definition_ProductSearch extends RakutenRws_Api_AppRakutenA
         $entityName = 'Product',
         $isRequiredAccessToken = false,
         $versionMap = array(
+            '2017-04-26' => '20170426',
             '2014-03-05' => '20140305',
         );
 
