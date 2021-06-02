@@ -187,7 +187,7 @@ if (!$client->fetchAccessTokenFromCode()) {
 }
 
 // Get list from FavoriteBookmarkList API
-$client->execute('FavoriteBookmarkList', array(
+$response = $client->execute('FavoriteBookmarkList', array(
     'hits' => 10
 ));
 
